@@ -149,7 +149,7 @@ console.log("Hello, World!");
 Digite essa linha no console e pressione Enter. Você deve ver o texto `Hello, World!` aparecer logo abaixo.
 
 > [!NOTE]
-> `console.log(...)` exibe qualquer valor entre os parênteses. Aqui exibimos um texto (string), mas mais adiante veremos que também dá para exibir números, booleans e resultados de cálculos.
+> `console.log(...)` exibe qualquer valor entre os parênteses. Aqui exibimos um texto (string), mas adiante veremos que também dá para exibir números, booleans e resultados de cálculos.
 
 Com o console testado e funcionando, vamos para um exemplo um pouco mais completo.
 
