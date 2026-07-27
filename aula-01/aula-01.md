@@ -135,6 +135,20 @@ flowchart LR
 
 Abra o console do navegador (veja a dica na seção anterior). Todo o código abaixo pode ser digitado e testado ali (ou em um arquivo `.js` rodado com Node, se preferir).
 
+### Primeiro contato: Hello, World!
+
+Antes de qualquer coisa, vamos escrever a linha mais tradicional de todo curso de programação — o famoso "Hello, World!". O objetivo aqui não é aprender um conceito novo, e sim confirmar que você já sabe abrir o console e executar uma linha de JavaScript nele.
+
+```js
+console.log("Hello, World!");
+```
+
+Digite essa linha no console e pressione Enter. Você deve ver o texto `Hello, World!` aparecer logo abaixo.
+
+> 📌 **Nota:** `console.log(...)` exibe qualquer valor entre os parênteses. Aqui exibimos um texto (string), mas mais adiante veremos que também dá para exibir números, booleans e resultados de cálculos.
+
+Com o console testado e funcionando, vamos para um exemplo um pouco mais completo.
+
 ### Antes de rodar
 
 Leia o código abaixo com atenção e responda: **o que você acha que vai aparecer no console, linha por linha?**
