@@ -6,7 +6,7 @@
 
 **Objetivos de aprendizagem:**
 
-- Explicar, em termos simples, como a internet conecta um navegador a um servidor e o que acontece quando uma página é carregada.
+- Explicar como a internet conecta um navegador a um servidor e o que acontece quando uma página é carregada.
 - Identificar as partes de uma URL e o papel de cada uma.
 - Declarar variáveis, reconhecer os tipos de dados básicos e usar operadores em JavaScript, testando tudo no console do navegador.
 
