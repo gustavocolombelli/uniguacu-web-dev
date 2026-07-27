@@ -1,36 +1,35 @@
-# Roadmap — Desenvolvimento Web 1
+# Roadmap — Desenvolvimento Web
 
 **Curso:** Engenharia de Software e Análise e Desenvolvimento de Sistemas
-**Produto/Artefato do Saber:** Aplicação web funcional (front-end e back-end) que consome APIs externas e uma API própria desenvolvida pelo aluno.
+
+**Produto/Artefato do Saber:** Aplicação web funcional (front-end) que consome APIs externas.
 
 ---
 
 ## 1. Cronograma
 
-| Encontro | Conteúdo |
-|---|---|
-| 1º | Internet, cliente-servidor, navegador e URL. Lógica computacional: variáveis, tipos de dados e operadores. |
-| 2º | Estruturas condicionais e de repetição (`if/else`, `for`, `while`) e funções básicas. |
-| 3º | Estrutura de documento HTML5, tags semânticas (`header`, `main`, `section`, `footer`) e acessibilidade. |
-| 4º | Formulários, inputs, tabelas, mídia (`img`, `audio`, `video`) e validação nativa HTML5. |
-| 5º | CSS: seletores, box model, cores, tipografia e unidades de medida. |
-| 6º | Flexbox: layout unidimensional, alinhamento e distribuição de elementos. |
-| 7º | CSS Grid e responsividade (media queries, mobile-first). |
-| 8º | JavaScript no navegador: sintaxe, `let`/`const`, escopo. Funções de alta ordem (`map`, `filter`, `reduce`) e closures. |
-| 9º | DOM: seleção de elementos e eventos. Arrays e objetos em JavaScript. **🏁 1ª Entrega do projeto.** |
-| 10º | Apresentação de trabalho 1 — checkpoint intermediário do projeto. |
-| 11º | Prova 1 — lógica computacional, HTML, CSS e fundamentos de JavaScript. |
-| 12º | Protocolo HTTP/HTTPS, métodos (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`), status codes e princípios REST. |
-| 13º | JSON: sintaxe, `JSON.parse`/`stringify`. |
-| 14º | Consumo de APIs com `fetch()`: requisições GET e exibição de dados na tela. |
-| 15º | Comunicação síncrona x assíncrona: event loop, call stack e callbacks. |
-| 16º | Promises, `async`/`await`, tratamento de erros e `Promise.all`. |
-| 17º | Node.js e Express: criação de endpoints (`GET`/`POST`) retornando JSON. |
-| 18º | Boas práticas: Git/GitHub, variáveis de ambiente, CORS e noções de autenticação. **🏁 Entrega Final do projeto.** |
-| 19º | Apresentação de trabalho 2 (final) — projeto completo. |
-| 20º | Prova 2 — HTTP, JSON, consumo de APIs e assincronismo. Encerramento da disciplina. |
-
-Material já publicado: [`aula-01/aula-01.md`](../aula-01/aula-01.md) e [`aula-02/aula-02.md`](../aula-02/aula-02.md).
+| Encontro | Conteúdo | Material |
+|---|---|--------------------------------------------|
+| 1º | Internet, cliente-servidor, navegador e URL. Lógica computacional: variáveis, tipos de dados (strings, números, booleanos) e operadores. | [`aula-01.md`](../aula-01/aula-01.md) |
+| 2º | Estruturas condicionais e de repetição (`if/else`, `for`, `while`) e funções básicas. | [`aula-02.md`](../aula-02/aula-02.md) |
+| 3º | Estrutura de documento HTML5, tags semânticas (`header`, `main`, `section`, `footer`) e acessibilidade. | *A publicar* |
+| 4º | Formulários, inputs, tabelas, mídia (`img`, `audio`, `video`) e validação nativa HTML5. | *A publicar* |
+| 5º | CSS: seletores, box model, cores, tipografia e unidades de medida. | *A publicar* |
+| 6º | Flexbox: layout unidimensional, alinhamento e distribuição de elementos. Prática com o jogo [Flexbox Froggy](https://flexboxfroggy.com/). | *A publicar* |
+| 7º | CSS Grid e responsividade (media queries, mobile-first). | *A publicar* |
+| 8º | JavaScript no navegador: sintaxe, `let`/`const`, escopo. Funções de alta ordem (`map`, `filter`, `reduce`) e closures. | *A publicar* |
+| 9º | Aprofundamento de JavaScript: escopo e closures na prática, funções de alta ordem combinadas (`map`, `filter`, `reduce` encadeados) e desestruturação. DOM: seleção de elementos e eventos. Arrays e objetos em JavaScript. | *A publicar* |
+| 10º | Apresentação de trabalho 1 — checkpoint intermediário do projeto. | *A publicar* |
+| 11º | Prova 1 — lógica computacional, HTML, CSS e fundamentos de JavaScript. | *A publicar* |
+| 12º | Protocolo HTTP/HTTPS, métodos (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`), status codes e princípios REST. | *A publicar* |
+| 13º | JSON: sintaxe, `JSON.parse`/`stringify`. Persistência de dados no navegador com `localStorage`. | *A publicar* |
+| 14º | Consumo de APIs com `fetch()`: requisições GET e exibição de dados na tela. | *A publicar* |
+| 15º | Comunicação síncrona x assíncrona: event loop, call stack e callbacks. | *A publicar* |
+| 16º | Promises, `async`/`await`, tratamento de erros e `Promise.all`. | *A publicar* |
+| 17º | Aprofundamento de Promises e `async`/`await`: encadeamento de promises, `Promise.all` e `Promise.allSettled` para múltiplas requisições simultâneas. | *A publicar* |
+| 18º | Padrões avançados de assincronismo: cancelamento de requisições (`AbortController`), nova tentativa automática após falha e tratamento de erros em aplicações assíncronas. **🏁 Entrega Final do projeto.** | *A publicar* |
+| 19º | Apresentação de trabalho 2 (final) — projeto completo. | *A publicar* |
+| 20º | Prova 2 — HTTP, JSON, consumo de APIs e assincronismo. Encerramento da disciplina. | *A publicar* |
 
 ---
 
@@ -49,25 +48,25 @@ Material já publicado: [`aula-01/aula-01.md`](../aula-01/aula-01.md) e [`aula-0
 }}}%%
 flowchart TD
     n1["1º — Internet e lógica computacional"]:::padrao
-    n2["2º — Condicionais e repetição"]:::padrao
+    n2["2º — Condicionais, repetição e funções"]:::padrao
     n3["3º — HTML5 semântico"]:::padrao
     n4["4º — Formulários e mídia"]:::padrao
     n5["5º — CSS básico"]:::padrao
     n6["6º — Flexbox"]:::padrao
     n7["7º — CSS Grid"]:::padrao
     n8["8º — JS no navegador"]:::padrao
-    n9["9º — 🏆 Trabalho 1 (entrega)"]:::trabalho
-    n10["10º — 🏆 Trabalho 1 (apresentação)"]:::trabalho
-    n11["11º — 📝 Prova 1"]:::prova
+    n9["9º — JS avançado e DOM"]:::padrao
+    n10["10º — Projeto (entrega/apresentação 1)"]:::trabalho
+    n11["11º — Prova 1"]:::prova
     n12["12º — Protocolo HTTP"]:::padrao
     n13["13º — JSON"]:::padrao
     n14["14º — fetch() e consumo de API"]:::padrao
     n15["15º — Event loop e callbacks"]:::padrao
     n16["16º — Promises e async/await"]:::padrao
-    n17["17º — Node.js e Express"]:::padrao
-    n18["18º — 🏆 Trabalho 2 (entrega final)"]:::trabalho
-    n19["19º — 🏆 Trabalho 2 (apresentação)"]:::trabalho
-    n20["20º — 📝 Prova 2"]:::prova
+    n17["17º — Promises avançado"]:::padrao
+    n18["18º — Assincronismo avançado"]:::padrao
+    n19["19º — Projeto (entrega/apresentação 2)"]:::trabalho
+    n20["20º — Prova 2"]:::prova
 
     n1 --> n2 --> n3 --> n4 --> n5 --> n6 --> n7 --> n8 --> n9 --> n10 --> n11 --> n12 --> n13 --> n14 --> n15 --> n16 --> n17 --> n18 --> n19 --> n20
 
