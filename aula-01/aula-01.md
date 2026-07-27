@@ -191,6 +191,18 @@ true
 
 > ⚠️ **Importante:** Prefira `const` sempre que o valor da variável não for mudar depois de criada. Use `let` apenas quando você já sabe que vai reatribuir o valor mais adiante. Essa escolha deixa o código mais fácil de entender, pois quem lê sabe de antemão o que pode ou não mudar.
 
+> 📌 **Nota:** JavaScript é uma linguagem **fracamente tipada** (também chamada de *dinamicamente tipada*): você não declara o tipo da variável explicitamente, e uma variável criada com `let` pode passar a guardar um valor de outro tipo depois, sem erro:
+> ```js
+> let valor = 10;    // number
+> valor = "dez";     // agora é string, e o JavaScript aceita numa boa
+> ```
+> Isso também faz o JavaScript aplicar **coerção automática de tipos**: converter um valor de um tipo para outro sozinho, sem avisar, quando a operação exige isso. Um exemplo clássico:
+> ```js
+> console.log("5" + 3);  // "53" — o número vira texto, e o + concatena
+> console.log("5" - 3);  // 2    — o texto vira número, pois o - só existe entre números
+> ```
+> Misturar tipos diferentes numa operação nem sempre dá erro — às vezes dá um resultado que engana quem não está esperando essa conversão automática.
+
 - **Etapa 2 — usar operadores para gerar novos valores**
   - `idade + 5` usa o **operador aritmético** `+` para somar. O resultado (`25`) é guardado em uma nova variável.
   - `idade >= 18` usa o **operador de comparação** `>=` ("maior ou igual"), que sempre devolve um boolean (`true` ou `false`).
@@ -246,6 +258,8 @@ mindmap
         let e const
       Tipos de dados
         string, number, boolean
+        fracamente tipada
+        coerção automática
       Operadores
         aritméticos
         comparação
