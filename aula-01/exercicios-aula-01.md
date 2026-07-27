@@ -272,15 +272,15 @@ console.log(maiorDeIdade3);
 
 ## Desafio
 
-**16.** Monte um "cartão de visita digital" em JavaScript: declare variáveis para `nome`, `profissao`, `email` (strings) e `anosExperiencia` (number). Calcule uma variável `anosParaAposentadoria`, considerando aposentadoria aos 35 anos de experiência (`35 - anosExperiencia`). Depois, monte uma única string `cartao`, concatenando todas as informações em um formato legível (ex.: `"Ana Silva - Desenvolvedora - ana@email.com"`), e exiba tanto o `cartao` quanto o `anosParaAposentadoria` no console. Por fim, use `typeof` para confirmar o tipo de cada uma das quatro primeiras variáveis.
+**16.** Monte um "cartão de visita digital" em JavaScript: declare variáveis para `nome`, `profissao`, `email` (strings) e `anosExperiencia` (number). Calcule uma variável `anosParaAposentadoria`, considerando aposentadoria aos 35 anos de experiência (`35 - anosExperiencia`). Depois, monte uma única string `cartao`, concatenando todas as informações em um formato legível (ex.: `"Ana Silva - Desenvolvedora - irineu@email.com"`), e exiba tanto o `cartao` quanto o `anosParaAposentadoria` no console. Por fim, use `typeof` para confirmar o tipo de cada uma das quatro primeiras variáveis.
 <details>
 <summary>Sugestão de solução</summary>
 
 ```js
 // Etapa 1: declarar os dados do cartão
-let nome = "Ana Silva";
+let nome = "Irineu Silva";
 let profissao = "Desenvolvedora";
-let email = "ana@email.com";
+let email = "irineu@email.com";
 let anosExperiencia = 6;
 
 // Etapa 2: calcular quanto falta para a aposentadoria
