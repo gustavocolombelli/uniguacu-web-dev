@@ -98,4 +98,4 @@ Cada um dos dois trabalhos do projeto é avaliado segundo os quatro critérios a
 | **Entrega no prazo** | Cumprimento do cronograma, organização dos arquivos e pontualidade na submissão. | 10% |
 | **Boas práticas de programação** | PascalCase, camelCase, nomenclaturas que revelem claramente sua intenção, significado e papel dentro do sistema. | 20% |
 | **Engajamento** | O aluno demonstra clareza e domínio ao explicar a lógica do programa, por que escolheu determinada lógica de validação ou nome de método, e participação em sala de aula (ex.: elaboração de exercícios). | 30% |
-| **Competências técnicas** | Avalia o domínio dos princípios fundamentais da Orientação a Objetos por meio da implementação assertiva da solução do problema proposto. | 40% |
+| **Competências técnicas** | Avalia o domínio dos princípios fundamentais do conteúdo passado em sala por meio da implementação assertiva da solução do problema proposto. | 40% |
