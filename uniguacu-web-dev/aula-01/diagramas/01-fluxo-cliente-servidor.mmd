@@ -1,0 +1,15 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#378ADD',
+  'primaryTextColor': '#0C447C',
+  'primaryBorderColor': '#185FA5',
+  'secondaryColor': '#D85A30',
+  'lineColor': '#5F5E5A'
+}}}%%
+sequenceDiagram
+    participant N as Navegador (cliente)
+    participant S as Servidor
+
+    N->>S: 1. Requisição HTTP (ex.: GET /index.html)
+    Note over N,S: viaja pela internet, passando por vários<br/>roteadores até chegar ao servidor
+    S-->>N: 2. Resposta HTTP (HTML, CSS, JS, imagens...)
+    Note over N: 3. Navegador interpreta a resposta<br/>e renderiza a página na tela

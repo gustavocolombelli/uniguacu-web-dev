@@ -1,0 +1,19 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#378ADD',
+  'primaryTextColor': '#0C447C',
+  'primaryBorderColor': '#185FA5',
+  'secondaryColor': '#D85A30',
+  'lineColor': '#5F5E5A'
+}}}%%
+flowchart LR
+    URL["https://www.exemplo.com.br/produtos?categoria=livros"]
+
+    URL --> P["Protocolo<br/>https://"]
+    URL --> D["Domínio<br/>www.exemplo.com.br"]
+    URL --> C["Caminho (path)<br/>/produtos"]
+    URL --> Q["Query string<br/>?categoria=livros"]
+
+    P --> P1["Como o navegador deve<br/>se comunicar com o servidor"]
+    D --> D1["Endereço do servidor<br/>na internet"]
+    C --> C1["Recurso específico<br/>pedido dentro do servidor"]
+    Q --> Q1["Parâmetros extras<br/>enviados na requisição"]
