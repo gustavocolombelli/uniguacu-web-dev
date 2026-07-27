@@ -26,8 +26,8 @@
 | 14º | Consumo de APIs com `fetch()`: requisições GET e exibição de dados na tela. | *A publicar* |
 | 15º | Comunicação síncrona x assíncrona: event loop, call stack e callbacks. | *A publicar* |
 | 16º | Promises, `async`/`await`, tratamento de erros e `Promise.all`. | *A publicar* |
-| 17º | Aprofundamento de Promises e `async`/`await`: encadeamento de promises, `Promise.all` e `Promise.allSettled` para múltiplas requisições simultâneas. | *A publicar* |
-| 18º | Padrões avançados de assincronismo: cancelamento de requisições (`AbortController`), nova tentativa automática após falha e tratamento de erros em aplicações assíncronas. **🏁 Entrega Final do projeto.** | *A publicar* |
+| 17º | Aprofundamento de Promises e `async`/`await`: encadeamento de promises, `Promise.all` e `Promise.allSettled`, cancelamento de requisições (`AbortController`) e nova tentativa automática após falha (retry). | *A publicar* |
+| 18º | Laboratório de finalização do projeto: revisão geral do conteúdo do semestre e trabalho supervisionado para testar, corrigir e polir a aplicação. **🏁 Entrega Final do projeto.** | *A publicar* |
 | 19º | Apresentação de trabalho 2 (final) — projeto completo. | *A publicar* |
 | 20º | Prova 2 — HTTP, JSON, consumo de APIs e assincronismo. Encerramento da disciplina. | *A publicar* |
 
@@ -64,7 +64,7 @@ flowchart TD
     n15["15º — Event loop e callbacks"]:::padrao
     n16["16º — Promises e async/await"]:::padrao
     n17["17º — Promises avançado"]:::padrao
-    n18["18º — Assincronismo avançado"]:::padrao
+    n18["18º — Finalização e revisão"]:::padrao
     n19["19º — Projeto (entrega/apresentação 2)"]:::trabalho
     n20["20º — Prova 2"]:::prova
 
