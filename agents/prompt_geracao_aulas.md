@@ -63,28 +63,43 @@ Reveal.js, para que o material tenha uma identidade visual única entre aulas.
 | Futura | Cinza | `#888780` |
 
 **Paleta categórica** (mapas mentais e diagramas com múltiplos ramos —
-vermelho fica reservado para erro/alerta, não entra aqui)
+vermelho fica reservado para erro/alerta, não entra aqui). A coluna "Texto"
+indica a cor de fonte que garante contraste legível sobre aquele fundo —
+nunca deixe o texto sem essa definição explícita, pois a cor padrão
+calculada pelo Mermaid pode ficar praticamente invisível dependendo do tom
+de fundo.
 
-| Ramo | Cor | Hex |
-|---|---|---|
-| 1 | Roxo | `#7F77DD` |
-| 2 | Verde-azulado | `#1D9E75` |
-| 3 | Coral | `#D85A30` |
-| 4 | Rosa | `#D4537E` |
-| 5 | Azul | `#378ADD` |
-| 6 | Verde | `#639922` |
-| 7 | Âmbar | `#EF9F27` |
+| Ramo | Cor | Hex | Texto |
+|---|---|---|---|
+| 1 | Roxo | `#7F77DD` | `#FFFFFF` |
+| 2 | Verde-azulado | `#1D9E75` | `#FFFFFF` |
+| 3 | Coral | `#D85A30` | `#FFFFFF` |
+| 4 | Rosa | `#D4537E` | `#FFFFFF` |
+| 5 | Azul | `#378ADD` | `#FFFFFF` |
+| 6 | Verde | `#639922` | `#FFFFFF` |
+| 7 | Âmbar | `#EF9F27` | `#2C2C2A` |
 
 **Aplicação técnica**
 
-Todo diagrama Mermaid deve abrir com esta diretiva de tema:
+Todo diagrama Mermaid deve abrir com esta diretiva de tema. Repare que
+`primaryTextColor` e `secondaryTextColor` usam branco (as cores de fundo da
+paleta são todas saturadas/escuras o suficiente para exigir texto claro), e
+que as notas (`Note over`, usadas em sequenceDiagram) têm fundo e texto
+próprios fixados, em vez de herdar a cor calculada automaticamente pelo tema
+— é justamente essa herança automática que costuma deixar o texto ilegível:
 ```
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#378ADD',
-  'primaryTextColor': '#0C447C',
+  'primaryTextColor': '#FFFFFF',
   'primaryBorderColor': '#185FA5',
   'secondaryColor': '#D85A30',
-  'lineColor': '#5F5E5A'
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#2C2C2A',
+  'lineColor': '#5F5E5A',
+  'textColor': '#2C2C2A',
+  'noteBkgColor': '#FFF6DA',
+  'noteTextColor': '#2C2C2A',
+  'noteBorderColor': '#D9B84A'
 }}}%%
 ```
 
@@ -104,8 +119,17 @@ No template Reveal.js, as mesmas cores entram como variáveis CSS:
 ```
 
 Em mapas mentais (`mindmap` do Mermaid) com múltiplos ramos, atribua uma cor
-da paleta categórica por ramo, sempre na mesma ordem, para manter consistência
-entre aulas diferentes.
+da paleta categórica por ramo (`cScale0`, `cScale1`, ...), sempre na mesma
+ordem, para manter consistência entre aulas diferentes — **e também a cor de
+texto correspondente daquele ramo** (`cScaleLabel0`, `cScaleLabel1`, ...),
+conforme a coluna "Texto" da tabela acima, para o rótulo nunca ficar
+invisível sobre o fundo do ramo. Exemplo para os 4 primeiros ramos:
+```
+  'cScale0': '#7F77DD', 'cScaleLabel0': '#FFFFFF',
+  'cScale1': '#1D9E75', 'cScaleLabel1': '#FFFFFF',
+  'cScale2': '#D85A30', 'cScaleLabel2': '#FFFFFF',
+  'cScale3': '#D4537E', 'cScaleLabel3': '#FFFFFF'
+```
 
 ---
 

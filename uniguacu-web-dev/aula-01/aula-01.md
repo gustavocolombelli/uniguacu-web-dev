@@ -78,10 +78,16 @@ https://www.exemplo.com.br/produtos?categoria=livros
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#378ADD',
-  'primaryTextColor': '#0C447C',
+  'primaryTextColor': '#FFFFFF',
   'primaryBorderColor': '#185FA5',
   'secondaryColor': '#D85A30',
-  'lineColor': '#5F5E5A'
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#2C2C2A',
+  'lineColor': '#5F5E5A',
+  'textColor': '#2C2C2A',
+  'noteBkgColor': '#FFF6DA',
+  'noteTextColor': '#2C2C2A',
+  'noteBorderColor': '#D9B84A'
 }}}%%
 sequenceDiagram
     participant N as Navegador (cliente)
@@ -98,10 +104,16 @@ sequenceDiagram
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#378ADD',
-  'primaryTextColor': '#0C447C',
+  'primaryTextColor': '#FFFFFF',
   'primaryBorderColor': '#185FA5',
   'secondaryColor': '#D85A30',
-  'lineColor': '#5F5E5A'
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#2C2C2A',
+  'lineColor': '#5F5E5A',
+  'textColor': '#2C2C2A',
+  'noteBkgColor': '#FFF6DA',
+  'noteTextColor': '#2C2C2A',
+  'noteBorderColor': '#D9B84A'
 }}}%%
 flowchart LR
     URL["https://www.exemplo.com.br/produtos?categoria=livros"]
@@ -190,14 +202,17 @@ Agora é sua vez: crie três variáveis novas para descrever **um produto** (por
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#378ADD',
-  'primaryTextColor': '#0C447C',
+  'primaryTextColor': '#FFFFFF',
   'primaryBorderColor': '#185FA5',
   'secondaryColor': '#D85A30',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#2C2C2A',
   'lineColor': '#5F5E5A',
-  'cScale0': '#7F77DD',
-  'cScale1': '#1D9E75',
-  'cScale2': '#D85A30',
-  'cScale3': '#D4537E'
+  'textColor': '#2C2C2A',
+  'cScale0': '#7F77DD', 'cScaleLabel0': '#FFFFFF',
+  'cScale1': '#1D9E75', 'cScaleLabel1': '#FFFFFF',
+  'cScale2': '#D85A30', 'cScaleLabel2': '#FFFFFF',
+  'cScale3': '#D4537E', 'cScaleLabel3': '#FFFFFF'
 }}}%%
 mindmap
   root((Aula 01<br/>Fundamentos da Web))
