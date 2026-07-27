@@ -41,7 +41,7 @@ Esse é o modelo mais importante da aula:
 
 Esse padrão de "pedido → resposta" se chama modelo **cliente-servidor**.
 
-> ⚠️ **Importante:** O modelo cliente-servidor é a base de praticamente tudo que veremos no curso — inclusive quando, mais para frente, formos consumir e construir APIs. Entender bem essa relação de "quem pede" e "quem responde" agora vai facilitar todo o restante da disciplina.
+> ⚠️ **Importante:** O modelo cliente-servidor é a base de praticamente tudo que veremos no curso — inclusive quando, mais para frente, formos consumir APIs. Entender bem essa relação de "quem pede" e "quem responde" agora vai facilitar todo o restante da disciplina.
 
 ### 2.3 O navegador
 
