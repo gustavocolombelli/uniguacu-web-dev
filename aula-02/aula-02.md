@@ -48,7 +48,8 @@ if (nota >= 7) {
 
 As condições são sempre expressões que resultam em `true` ou `false` — exatamente como os operadores de comparação (`>=`, `==`, `<`...) vistos na aula passada.
 
-> ⚠️ **Importante:** Só o primeiro bloco cuja condição for verdadeira é executado. Depois disso, o JavaScript ignora todo o resto da cadeia `if`/`else if`/`else`, mesmo que outra condição também fosse verdadeira.
+> [!IMPORTANT]
+> Só o primeiro bloco cuja condição for verdadeira é executado. Depois disso, o JavaScript ignora todo o resto da cadeia `if`/`else if`/`else`, mesmo que outra condição também fosse verdadeira.
 
 ### 2.2 Operadores lógicos
 
@@ -67,7 +68,8 @@ if (idade >= 18 && temCarteira) {
 }
 ```
 
-> 💡 **Dica:** Leia `&&` como "e" e `||` como "ou" em português — isso ajuda a montar a condição do jeito que você pensaria a regra em voz alta.
+> [!TIP]
+> Leia `&&` como "e" e `||` como "ou" em português — isso ajuda a montar a condição do jeito que você pensaria a regra em voz alta.
 
 ### 2.3 Estruturas de repetição: `for` e `while`
 
@@ -93,7 +95,8 @@ while (senha !== "1234") {
 console.log("Senha correta!");
 ```
 
-> ⚠️ **Importante:** Todo laço precisa, em algum momento, tornar sua condição falsa. Se isso nunca acontecer, o laço roda para sempre (*loop infinito*) e trava o programa — sempre confira se a variável usada na condição está mudando dentro do bloco.
+> [!WARNING]
+> Todo laço precisa, em algum momento, tornar sua condição falsa. Se isso nunca acontecer, o laço roda para sempre (*loop infinito*) e trava o programa — sempre confira se a variável usada na condição está mudando dentro do bloco.
 
 ### 2.4 Funções básicas
 
@@ -112,7 +115,8 @@ console.log(dobro(10)); // 20
 - `return` devolve um valor para quem chamou a função e encerra a execução dela.
 - `dobro(5)` é a **chamada** da função, passando `5` como **argumento** — o valor real usado naquela chamada.
 
-> 📌 **Nota:** Sem `return`, uma função executa normalmente, mas devolve `undefined` para quem a chamou.
+> [!NOTE]
+> Sem `return`, uma função executa normalmente, mas devolve `undefined` para quem a chamou.
 
 ---
 

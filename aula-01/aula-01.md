@@ -30,7 +30,8 @@ A internet é uma rede gigante de computadores conectados entre si, capazes de t
 
 Não precisamos entender os detalhes de roteamento para programar para a web.
 
-> 📌 **Nota:** Toda comunicação na web acontece entre pelo menos duas máquinas, através de uma rede.
+> [!NOTE]
+> Toda comunicação na web acontece entre pelo menos duas máquinas, através de uma rede.
 
 ### 2.2 Cliente e servidor
 
@@ -41,7 +42,8 @@ Esse é o modelo mais importante da aula:
 
 Esse padrão de "pedido → resposta" se chama modelo **cliente-servidor**.
 
-> ⚠️ **Importante:** O modelo cliente-servidor é a base de praticamente tudo que veremos no curso — inclusive quando, mais para frente, formos consumir APIs. Entender bem essa relação de "quem pede" e "quem responde" agora vai facilitar todo o restante da disciplina.
+> [!IMPORTANT]
+> O modelo cliente-servidor é a base de praticamente tudo que veremos no curso — inclusive quando, mais para frente, formos consumir APIs. Entender bem essa relação de "quem pede" e "quem responde" agora vai facilitar todo o restante da disciplina.
 
 ### 2.3 O navegador
 
@@ -54,7 +56,8 @@ O navegador é um programa com várias responsabilidades:
 
 Ele também tem ferramentas para desenvolvedores (**DevTools**) que vamos usar bastante ao longo do curso — inclusive hoje, para testar código JavaScript diretamente no console.
 
-> 💡 **Dica:** Para abrir o DevTools em qualquer navegador, pressione `F12` ou clique com o botão direito na página e selecione "Inspecionar". A aba **Console** é onde vamos digitar e testar código JavaScript nesta aula.
+> [!TIP]
+> Para abrir o DevTools em qualquer navegador, pressione `F12` ou clique com o botão direito na página e selecione "Inspecionar". A aba **Console** é onde vamos digitar e testar código JavaScript nesta aula.
 
 ### 2.4 O que é uma URL
 
@@ -145,7 +148,8 @@ console.log("Hello, World!");
 
 Digite essa linha no console e pressione Enter. Você deve ver o texto `Hello, World!` aparecer logo abaixo.
 
-> 📌 **Nota:** `console.log(...)` exibe qualquer valor entre os parênteses. Aqui exibimos um texto (string), mas mais adiante veremos que também dá para exibir números, booleans e resultados de cálculos.
+> [!NOTE]
+> `console.log(...)` exibe qualquer valor entre os parênteses. Aqui exibimos um texto (string), mas mais adiante veremos que também dá para exibir números, booleans e resultados de cálculos.
 
 Com o console testado e funcionando, vamos para um exemplo um pouco mais completo.
 
@@ -189,9 +193,11 @@ true
   - `let matriculado = true;` cria uma variável do tipo **boolean** (verdadeiro/falso).
   - `let` é a forma mais comum de declarar uma variável cujo valor pode mudar depois. Existe também `const`, usado quando o valor **não** deve ser reatribuído.
 
-> ⚠️ **Importante:** Prefira `const` sempre que o valor da variável não for mudar depois de criada. Use `let` apenas quando você já sabe que vai reatribuir o valor mais adiante. Essa escolha deixa o código mais fácil de entender, pois quem lê sabe de antemão o que pode ou não mudar.
+> [!TIP]
+> Prefira `const` sempre que o valor da variável não for mudar depois de criada. Use `let` apenas quando você já sabe que vai reatribuir o valor mais adiante. Essa escolha deixa o código mais fácil de entender, pois quem lê sabe de antemão o que pode ou não mudar.
 
-> 📌 **Nota:** JavaScript é uma linguagem **fracamente tipada** (também chamada de *dinamicamente tipada*): você não declara o tipo da variável explicitamente, e uma variável criada com `let` pode passar a guardar um valor de outro tipo depois, sem erro:
+> [!CAUTION]
+> JavaScript é uma linguagem **fracamente tipada** (também chamada de *dinamicamente tipada*): você não declara o tipo da variável explicitamente, e uma variável criada com `let` pode passar a guardar um valor de outro tipo depois, sem erro:
 > ```js
 > let valor = 10;    // number
 > valor = "dez";     // agora é string, e o JavaScript aceita numa boa
@@ -284,7 +290,8 @@ mindmap
 
 Alternativa **B**. O navegador (cliente) sempre inicia o processo enviando uma requisição; o servidor responde a essa requisição.
 
-> ⚠️ **Importante:** Não existe resposta sem uma requisição prévia — o servidor nunca "empurra" conteúdo por conta própria nesse modelo básico.
+> [!IMPORTANT]
+> Não existe resposta sem uma requisição prévia — o servidor nunca "empurra" conteúdo por conta própria nesse modelo básico.
 
 </details>
 
