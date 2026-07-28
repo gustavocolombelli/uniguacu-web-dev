@@ -153,62 +153,17 @@ console.log(somar(10, 20)); // 30
 
 O diagrama abaixo mostra como o JavaScript decide qual bloco executar ao avaliar a nota de um aluno com duas condições encadeadas.
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'noteBkgColor': '#FEF3C7',
-  'noteTextColor': '#1F2937',
-  'noteBorderColor': '#D97706'
-}}}%%
-flowchart TD
-    A["Nota do aluno"]:::entrada --> B{"nota >= 7?"}:::decisao
-    B -->|sim| C["Aprovado"]:::resultado
-    B -->|não| D{"nota >= 5?"}:::decisao
-    D -->|sim| E["Exame final"]:::resultado
-    D -->|não| F["Reprovado"]:::resultado
+![Fluxograma: a partir da nota do aluno, se nota >= 7 então Aprovado; senão, se nota >= 5 então Exame final; senão Reprovado](diagramas/01-fluxo-condicional.svg)
 
-    classDef entrada fill:#EA580C,stroke:#C2410C,color:#FFFFFF;
-    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
-    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;
-```
+*Código-fonte do diagrama: [`diagramas/01-fluxo-condicional.mmd`](diagramas/01-fluxo-condicional.mmd)*
 
 ### 3.2 Fluxo de execução de um laço de repetição
 
 O diagrama abaixo mostra o ciclo de um laço `for`: a condição é testada antes de cada repetição, e o laço só termina quando ela se torna falsa.
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'noteBkgColor': '#FEF3C7',
-  'noteTextColor': '#1F2937',
-  'noteBorderColor': '#D97706'
-}}}%%
-flowchart TD
-    A["Início: aluno = 1"]:::entrada --> B{"aluno <= 5?"}:::decisao
-    B -->|sim| C["Verificar situação<br/>e exibir resultado"]:::processo
-    C --> D["aluno = aluno + 1"]:::processo
-    D --> B
-    B -->|não| E["Fim do laço"]:::resultado
+![Fluxograma: início com aluno = 1; enquanto aluno <= 5, verificar situação, exibir resultado e incrementar aluno, voltando a testar a condição; quando aluno deixa de ser <= 5, fim do laço](diagramas/02-fluxo-repeticao.svg)
 
-    classDef entrada fill:#EA580C,stroke:#C2410C,color:#FFFFFF;
-    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
-    classDef processo fill:#16A34A,stroke:#166534,color:#FFFFFF;
-    classDef resultado fill:#4B5563,stroke:#374151,color:#FFFFFF;
-```
+*Código-fonte do diagrama: [`diagramas/02-fluxo-repeticao.mmd`](diagramas/02-fluxo-repeticao.mmd)*
 
 ---
 
@@ -275,37 +230,9 @@ Crie uma função chamada `verificarPar` que recebe um número e retorna o texto
 
 ## 5. Resumo
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'cScale0': '#2563EB', 'cScaleLabel0': '#FFFFFF',
-  'cScale1': '#7C3AED', 'cScaleLabel1': '#FFFFFF',
-  'cScale2': '#16A34A', 'cScaleLabel2': '#FFFFFF',
-  'cScale3': '#EA580C', 'cScaleLabel3': '#FFFFFF'
-}}}%%
-mindmap
-  root((Aula 02<br/>Condicionais, Repetição<br/>e Funções))
-    Condicionais
-      if / else / else if
-      Operadores lógicos
-        &&, ||, !
-    Repetição
-      for
-        inicialização, condição, incremento
-      while
-        repete enquanto a condição for true
-    Funções
-      Declaração com function
-      Parâmetros
-      return
-```
+![Mapa mental resumindo a Aula 02: Condicionais (if/else/else if, operadores lógicos), Repetição (for, while) e Funções (declaração, parâmetros, return)](diagramas/03-resumo-aula-02.svg)
+
+*Código-fonte do diagrama: [`diagramas/03-resumo-aula-02.mmd`](diagramas/03-resumo-aula-02.mmd)*
 
 - `if`/`else if`/`else` escolhem um caminho de execução com base em uma condição.
 - `&&`, `||` e `!` combinam ou invertem condições.
