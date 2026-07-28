@@ -78,59 +78,15 @@ https://www.exemplo.com.br/produtos?categoria=livros
 
 ### 3.1 Fluxo cliente-servidor
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#378ADD',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#185FA5',
-  'secondaryColor': '#D85A30',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#2C2C2A',
-  'lineColor': '#5F5E5A',
-  'textColor': '#2C2C2A',
-  'noteBkgColor': '#FFF6DA',
-  'noteTextColor': '#2C2C2A',
-  'noteBorderColor': '#D9B84A'
-}}}%%
-sequenceDiagram
-    participant N as Navegador (cliente)
-    participant S as Servidor
+<img src="diagramas/01-fluxo-cliente-servidor.svg" alt="Diagrama de sequência: navegador envia requisição HTTP ao servidor, que responde com HTML/CSS/JS/imagens, e o navegador renderiza a página" width="600">
 
-    N->>S: 1. Requisição HTTP (ex.: GET /index.html)
-    Note over N,S: viaja pela internet, passando por vários<br/>roteadores até chegar ao servidor
-    S-->>N: 2. Resposta HTTP (HTML, CSS, JS, imagens...)
-    Note over N: 3. Navegador interpreta a resposta<br/>e renderiza a página na tela
-```
+*Código-fonte do diagrama: [`diagramas/01-fluxo-cliente-servidor.mmd`](diagramas/01-fluxo-cliente-servidor.mmd)*
 
 ### 3.2 Anatomia de uma URL
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#378ADD',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#185FA5',
-  'secondaryColor': '#D85A30',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#2C2C2A',
-  'lineColor': '#5F5E5A',
-  'textColor': '#2C2C2A',
-  'noteBkgColor': '#FFF6DA',
-  'noteTextColor': '#2C2C2A',
-  'noteBorderColor': '#D9B84A'
-}}}%%
-flowchart LR
-    URL["https://www.exemplo.com.br/produtos?categoria=livros"]
+<img src="diagramas/02-anatomia-url.svg" alt="Diagrama mostrando as quatro partes de uma URL: protocolo, domínio, caminho e query string, cada uma com sua função" width="600">
 
-    URL --> P["Protocolo<br/>https://"]
-    URL --> D["Domínio<br/>www.exemplo.com.br"]
-    URL --> C["Caminho (path)<br/>/produtos"]
-    URL --> Q["Query string<br/>?categoria=livros"]
-
-    P --> P1["Como o navegador deve<br/>se comunicar com o servidor"]
-    D --> D1["Endereço do servidor<br/>na internet"]
-    C --> C1["Recurso específico<br/>pedido dentro do servidor"]
-    Q --> Q1["Parâmetros extras<br/>enviados na requisição"]
-```
+*Código-fonte do diagrama: [`diagramas/02-anatomia-url.mmd`](diagramas/02-anatomia-url.mmd)*
 
 ---
 
@@ -231,46 +187,9 @@ Agora é sua vez: crie três variáveis novas para descrever **um produto** (por
 
 ## 5. Infográfico-resumo
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#378ADD',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#185FA5',
-  'secondaryColor': '#D85A30',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#2C2C2A',
-  'lineColor': '#5F5E5A',
-  'textColor': '#2C2C2A',
-  'cScale0': '#7F77DD', 'cScaleLabel0': '#FFFFFF',
-  'cScale1': '#1D9E75', 'cScaleLabel1': '#FFFFFF',
-  'cScale2': '#D85A30', 'cScaleLabel2': '#FFFFFF',
-  'cScale3': '#D4537E', 'cScaleLabel3': '#FFFFFF'
-}}}%%
-mindmap
-  root((Aula 01<br/>Fundamentos da Web))
-    Internet
-      Rede de computadores interligados
-      Dados viajam em pacotes
-    Cliente-servidor
-      Navegador pede (requisição)
-      Servidor responde (resposta)
-    URL
-      Protocolo
-      Domínio
-      Caminho
-      Query string
-    Lógica computacional
-      Variáveis
-        let e const
-      Tipos de dados
-        string, number, boolean
-        fracamente tipada
-        coerção automática
-      Operadores
-        aritméticos
-        comparação
-        lógicos
-```
+<img src="diagramas/03-resumo-aula-01.svg" alt="Mapa mental resumindo a Aula 01: Internet, Cliente-servidor, URL (protocolo, domínio, caminho, query string) e Lógica computacional (variáveis, tipos de dados, operadores)" width="600">
+
+*Código-fonte do diagrama: [`diagramas/03-resumo-aula-01.mmd`](diagramas/03-resumo-aula-01.mmd)*
 
 ---
 

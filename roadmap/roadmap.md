@@ -35,41 +35,9 @@
 
 ## 2. Diagrama do cronograma
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#378ADD',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#185FA5',
-  'secondaryColor': '#D85A30',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#2C2C2A',
-  'lineColor': '#5F5E5A',
-  'textColor': '#2C2C2A'
-}}}%%
-flowchart TD
-    subgraph B1["Bloco 1 — Lógica, HTML e CSS (1º–5º)"]
-        direction LR
-        n1["1º — Internet e lógica computacional"]:::padrao --> n2["2º — Condicionais, repetição e funções"]:::padrao --> n3["3º — HTML5 semântico"]:::padrao --> n4["4º — Formulários e mídia"]:::padrao --> n5["5º — CSS básico"]:::padrao
-    end
-    subgraph B2["Bloco 2 — Layout e checkpoint (6º–10º)"]
-        direction LR
-        n6["6º — Flexbox"]:::padrao --> n7["7º — CSS Grid"]:::padrao --> n8["8º — JS no navegador"]:::padrao --> n9["9º — JS avançado e DOM"]:::padrao --> n10["10º — Projeto (entrega/apresentação 1)"]:::trabalho
-    end
-    subgraph B3["Bloco 3 — HTTP, JSON e APIs (11º–15º)"]
-        direction LR
-        n11["11º — Prova 1"]:::prova --> n12["12º — Protocolo HTTP"]:::padrao --> n13["13º — JSON"]:::padrao --> n14["14º — fetch() e consumo de API"]:::padrao --> n15["15º — Event loop e callbacks"]:::padrao
-    end
-    subgraph B4["Bloco 4 — Assincronismo e finalização (16º–20º)"]
-        direction LR
-        n16["16º — Promises e async/await"]:::padrao --> n17["17º — Promises avançado"]:::padrao --> n18["18º — Finalização e revisão"]:::padrao --> n19["19º — Projeto (entrega/apresentação 2)"]:::trabalho --> n20["20º — Prova 2"]:::prova
-    end
+<img src="diagramas/01-cronograma.svg" alt="Cronograma em 4 blocos: Bloco 1 Lógica/HTML/CSS (1º-5º), Bloco 2 Layout e checkpoint (6º-10º), Bloco 3 HTTP/JSON/APIs (11º-15º), Bloco 4 Assincronismo e finalização (16º-20º)" width="600">
 
-    B1 --> B2 --> B3 --> B4
-
-    classDef padrao fill:#EDEDEB,color:#2C2C2A,stroke:#C9C8C2,stroke-width:1px;
-    classDef trabalho fill:#378ADD,color:#FFFFFF,stroke:#185FA5,stroke-width:2px;
-    classDef prova fill:#D85A30,color:#FFFFFF,stroke:#A8431F,stroke-width:2px;
-```
+*Código-fonte do diagrama: [`diagramas/01-cronograma.mmd`](diagramas/01-cronograma.mmd)*
 
 🔵 Trabalho (projeto) · 🟠 Prova
 

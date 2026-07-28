@@ -179,72 +179,17 @@ Você já viu `<img>` na aula 03 — o mesmo cuidado com `alt` vale aqui. Para �
 
 O diagrama abaixo mostra o que o navegador faz internamente entre o clique em "Enviar" e o formulário realmente ser enviado ao servidor.
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'noteBkgColor': '#FEF3C7',
-  'noteTextColor': '#1F2937',
-  'noteBorderColor': '#D97706'
-}}}%%
-flowchart TD
-    A["Usuário clica em Enviar"] --> B{"Todos os campos<br/>required estão<br/>preenchidos?"}
-    B -->|Não| C["Navegador bloqueia o envio<br/>e foca no primeiro campo inválido"]
-    B -->|Sim| D{"Valores respeitam<br/>type / pattern / min / max?"}
-    D -->|Não| C
-    D -->|Sim| E["Formulário é enviado<br/>ao servidor"]
-    C --> F["Exibe mensagem de erro<br/>nativa do navegador"]
+<img src="diagramas/01-fluxo-validacao-formulario.svg" alt="Fluxograma: ao clicar em Enviar, o navegador checa campos required e depois type/pattern/min/max; se algo falhar, bloqueia o envio e mostra erro; se tudo passar, envia ao servidor" height="600">
 
-    classDef inicio fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
-    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
-    classDef erro fill:#DC2626,stroke:#991B1B,color:#FFFFFF;
-    classDef sucesso fill:#16A34A,stroke:#166534,color:#FFFFFF;
-    class A inicio;
-    class B,D decisao;
-    class C,F erro;
-    class E sucesso;
-```
+*Código-fonte do diagrama: [`diagramas/01-fluxo-validacao-formulario.mmd`](diagramas/01-fluxo-validacao-formulario.mmd)*
 
 ### 3.2 Qual tipo de input usar
 
 Este fluxo ajuda a decidir o `type` correto para um campo, seguindo as perguntas da seção 2.2.
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'noteBkgColor': '#FEF3C7',
-  'noteTextColor': '#1F2937',
-  'noteBorderColor': '#D97706'
-}}}%%
-flowchart TD
-    Q1{"O dado é<br/>um e-mail?"}
-    Q1 -->|Sim| EMAIL["Use type=email"]
-    Q1 -->|Não| Q2{"É uma senha que<br/>deve ficar oculta<br/>na tela?"}
-    Q2 -->|Sim| PASSWORD["Use type=password"]
-    Q2 -->|Não| Q3{"É um número ou<br/>uma data?"}
-    Q3 -->|Sim| NUMDATE["Use type=number<br/>ou type=date"]
-    Q3 -->|Não| Q4{"Só pode escolher<br/>entre opções fixas?"}
-    Q4 -->|Sim| CHOICE["Use checkbox, radio<br/>ou select"]
-    Q4 -->|Não| TEXT["Use type=text"]
+<img src="diagramas/02-fluxo-escolha-tipo-input.svg" alt="Fluxograma de decisão para escolher o type do input: email, password, number/date, checkbox/radio/select ou text" height="600">
 
-    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
-    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;
-    class Q1,Q2,Q3,Q4 decisao;
-    class EMAIL,PASSWORD,NUMDATE,CHOICE,TEXT resultado;
-```
+*Código-fonte do diagrama: [`diagramas/02-fluxo-escolha-tipo-input.mmd`](diagramas/02-fluxo-escolha-tipo-input.mmd)*
 
 ---
 
@@ -339,41 +284,9 @@ Adicione ao formulário um campo `<select>` chamado "Camiseta" com pelo menos tr
 
 ## 5. Resumo
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'cScale0': '#2563EB', 'cScaleLabel0': '#FFFFFF',
-  'cScale1': '#7C3AED', 'cScaleLabel1': '#FFFFFF',
-  'cScale2': '#16A34A', 'cScaleLabel2': '#FFFFFF',
-  'cScale3': '#EA580C', 'cScaleLabel3': '#FFFFFF'
-}}}%%
-mindmap
-  root((Aula 04<br/>Formulários, Tabelas<br/>e Mídia))
-    Formulários e inputs
-      form action / method
-      label for
-      type text / email / password / tel
-    Validação nativa HTML5
-      required
-      pattern
-      minlength / min / max
-      mensagens automáticas
-    Tabelas
-      table / caption
-      thead / tbody
-      tr / th / td
-    Mídia
-      img alt
-      audio controls
-      video controls
-```
+<img src="diagramas/03-resumo-aula-04.svg" alt="Mapa mental resumindo a Aula 04: Formulários e inputs, Validação nativa HTML5, Tabelas e Mídia" width="600">
+
+*Código-fonte do diagrama: [`diagramas/03-resumo-aula-04.mmd`](diagramas/03-resumo-aula-04.mmd)*
 
 - `<form>` define `action` (para onde enviar) e `method` (`get` ou `post`, nunca `get` para dados sensíveis).
 - O `type` do `<input>` muda o teclado, o formato aceito e a validação nativa aplicada — escolha sempre o mais específico para o dado.

@@ -153,7 +153,7 @@ console.log(somar(10, 20)); // 30
 
 O diagrama abaixo mostra como o JavaScript decide qual bloco executar ao avaliar a nota de um aluno com duas condições encadeadas.
 
-![Fluxograma: a partir da nota do aluno, se nota >= 7 então Aprovado; senão, se nota >= 5 então Exame final; senão Reprovado](diagramas/01-fluxo-condicional.svg)
+<img src="diagramas/01-fluxo-condicional.svg" alt="Fluxograma: a partir da nota do aluno, se nota >= 7 então Aprovado; senão, se nota >= 5 então Exame final; senão Reprovado" height="600">
 
 *Código-fonte do diagrama: [`diagramas/01-fluxo-condicional.mmd`](diagramas/01-fluxo-condicional.mmd)*
 
@@ -161,7 +161,7 @@ O diagrama abaixo mostra como o JavaScript decide qual bloco executar ao avaliar
 
 O diagrama abaixo mostra o ciclo de um laço `for`: a condição é testada antes de cada repetição, e o laço só termina quando ela se torna falsa.
 
-![Fluxograma: início com aluno = 1; enquanto aluno <= 5, verificar situação, exibir resultado e incrementar aluno, voltando a testar a condição; quando aluno deixa de ser <= 5, fim do laço](diagramas/02-fluxo-repeticao.svg)
+<img src="diagramas/02-fluxo-repeticao.svg" alt="Fluxograma: início com aluno = 1; enquanto aluno <= 5, verificar situação, exibir resultado e incrementar aluno, voltando a testar a condição; quando aluno deixa de ser <= 5, fim do laço" height="600">
 
 *Código-fonte do diagrama: [`diagramas/02-fluxo-repeticao.mmd`](diagramas/02-fluxo-repeticao.mmd)*
 
@@ -230,7 +230,7 @@ Crie uma função chamada `verificarPar` que recebe um número e retorna o texto
 
 ## 5. Resumo
 
-![Mapa mental resumindo a Aula 02: Condicionais (if/else/else if, operadores lógicos), Repetição (for, while) e Funções (declaração, parâmetros, return)](diagramas/03-resumo-aula-02.svg)
+<img src="diagramas/03-resumo-aula-02.svg" alt="Mapa mental resumindo a Aula 02: Condicionais (if/else/else if, operadores lógicos), Repetição (for, while) e Funções (declaração, parâmetros, return)" width="600">
 
 *Código-fonte do diagrama: [`diagramas/03-resumo-aula-02.mmd`](diagramas/03-resumo-aula-02.mmd)*
 

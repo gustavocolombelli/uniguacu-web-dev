@@ -109,70 +109,17 @@ Dentro do `<body>`, use tags que descrevem o papel de cada região:
 
 O diagrama abaixo mostra como as tags de estrutura se aninham dentro de um documento HTML5 típico.
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'noteBkgColor': '#FEF3C7',
-  'noteTextColor': '#1F2937',
-  'noteBorderColor': '#D97706'
-}}}%%
-flowchart TD
-    HTML["html"] --> HEAD["head<br/>(meta, title)"]
-    HTML --> BODY["body"]
-    BODY --> HEADER["header<br/>(logo, título)"]
-    HEADER --> NAV["nav<br/>(menu de navegação)"]
-    BODY --> MAIN["main<br/>(conteúdo único da página)"]
-    MAIN --> SECTION1["section<br/>(bloco temático 1)"]
-    MAIN --> SECTION2["section<br/>(bloco temático 2)"]
-    BODY --> FOOTER["footer<br/>(rodapé, contato)"]
+<img src="diagramas/01-hierarquia-tags-semanticas.svg" alt="Diagrama de hierarquia: html contém head e body; body contém header (com nav), main (com duas section) e footer" width="600">
 
-    classDef estrutura fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
-    classDef conteudo fill:#16A34A,stroke:#166534,color:#FFFFFF;
-    class HTML,HEAD,BODY estrutura;
-    class HEADER,NAV,MAIN,SECTION1,SECTION2,FOOTER conteudo;
-```
+*Código-fonte do diagrama: [`diagramas/01-hierarquia-tags-semanticas.mmd`](diagramas/01-hierarquia-tags-semanticas.mmd)*
 
 ### 3.2 Qual tag semântica usar
 
 Este fluxo ajuda a decidir qual tag encaixa em cada bloco de conteúdo, seguindo as perguntas da seção 2.3.
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'noteBkgColor': '#FEF3C7',
-  'noteTextColor': '#1F2937',
-  'noteBorderColor': '#D97706'
-}}}%%
-flowchart TD
-    Q1{"É o assunto único e<br/>principal da página?"}
-    Q1 -->|Sim| MAIN["Use main"]
-    Q1 -->|Não| Q2{"É um agrupamento<br/>temático dentro do<br/>conteúdo?"}
-    Q2 -->|Sim| SECTION["Use section"]
-    Q2 -->|Não| Q3{"Faz sentido sozinho,<br/>fora de contexto?<br/>(post, notícia)"}
-    Q3 -->|Sim| ARTICLE["Use article"]
-    Q3 -->|Não| Q4{"É relacionado, mas<br/>não essencial?<br/>(barra lateral)"}
-    Q4 -->|Sim| ASIDE["Use aside"]
-    Q4 -->|Não| DIV["Use div<br/>(sem significado semântico)"]
+<img src="diagramas/02-fluxo-escolha-tag-semantica.svg" alt="Fluxograma de decisão para escolher entre main, section, article, aside ou div, a partir de perguntas sobre o papel do conteúdo" height="600">
 
-    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
-    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;
-    class Q1,Q2,Q3,Q4 decisao;
-    class MAIN,SECTION,ARTICLE,ASIDE,DIV resultado;
-```
+*Código-fonte do diagrama: [`diagramas/02-fluxo-escolha-tag-semantica.mmd`](diagramas/02-fluxo-escolha-tag-semantica.mmd)*
 
 ---
 
@@ -264,43 +211,9 @@ Monte do zero o esqueleto semântico de uma página institucional para um negóc
 
 ## 5. Resumo
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {
-  'primaryColor': '#2563EB',
-  'primaryTextColor': '#FFFFFF',
-  'primaryBorderColor': '#1D4ED8',
-  'secondaryColor': '#7C3AED',
-  'secondaryTextColor': '#FFFFFF',
-  'tertiaryTextColor': '#1F2937',
-  'lineColor': '#6B7280',
-  'textColor': '#1F2937',
-  'cScale0': '#2563EB', 'cScaleLabel0': '#FFFFFF',
-  'cScale1': '#7C3AED', 'cScaleLabel1': '#FFFFFF',
-  'cScale2': '#16A34A', 'cScaleLabel2': '#FFFFFF',
-  'cScale3': '#EA580C', 'cScaleLabel3': '#FFFFFF'
-}}}%%
-mindmap
-  root((Aula 03<br/>Estrutura HTML5<br/>e Acessibilidade))
-    Documento HTML5
-      DOCTYPE
-      html lang
-      head
-        meta charset
-        title
-    Tags semânticas
-      header / nav
-      main
-      section / article
-      aside
-      footer
-    Hierarquia de headings
-      um único h1
-      sem pular níveis
-    Acessibilidade
-      atributo alt
-      atributo lang
-      landmarks
-```
+<img src="diagramas/03-resumo-aula-03.svg" alt="Mapa mental resumindo a Aula 03: Documento HTML5, Tags semânticas, Hierarquia de headings e Acessibilidade" width="600">
+
+*Código-fonte do diagrama: [`diagramas/03-resumo-aula-03.mmd`](diagramas/03-resumo-aula-03.mmd)*
 
 - Tags semânticas (`header`, `nav`, `main`, `section`, `article`, `aside`, `footer`) descrevem o papel de cada região, ao contrário de `<div>`.
 - `main` é único por página; `section` agrupa temas; `article` faz sentido sozinho; `aside` é complementar.
