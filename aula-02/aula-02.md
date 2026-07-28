@@ -230,7 +230,7 @@ Crie uma função chamada `verificarPar` que recebe um número e retorna o texto
 
 ## 5. Resumo
 
-<img src="diagramas/03-resumo-aula-02.svg" alt="Mapa mental resumindo a Aula 02: Condicionais (if/else/else if, operadores lógicos), Repetição (for, while) e Funções (declaração, parâmetros, return)" width="600">
+<img src="diagramas/03-resumo-aula-02.svg" alt="Mapa mental resumindo a Aula 02: Condicionais (if/else/else if, operadores lógicos), Repetição (for, while) e Funções (declaração, parâmetros, return)" width="900">
 
 *Código-fonte do diagrama: [`diagramas/03-resumo-aula-02.mmd`](diagramas/03-resumo-aula-02.mmd)*
 
