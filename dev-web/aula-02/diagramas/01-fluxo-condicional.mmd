@@ -1,0 +1,23 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#1F2937',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    A["Nota do aluno"]:::entrada --> B{"nota >= 7?"}:::decisao
+    B -->|sim| C["Aprovado"]:::resultado
+    B -->|não| D{"nota >= 5?"}:::decisao
+    D -->|sim| E["Exame final"]:::resultado
+    D -->|não| F["Reprovado"]:::resultado
+
+    classDef entrada fill:#EA580C,stroke:#C2410C,color:#FFFFFF;
+    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
+    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;

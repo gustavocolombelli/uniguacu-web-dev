@@ -1,0 +1,24 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#1F2937',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    A["Início: aluno = 1"]:::entrada --> B{"aluno <= 5?"}:::decisao
+    B -->|sim| C["Verificar situação<br/>e exibir resultado"]:::processo
+    C --> D["aluno = aluno + 1"]:::processo
+    D --> B
+    B -->|não| E["Fim do laço"]:::resultado
+
+    classDef entrada fill:#EA580C,stroke:#C2410C,color:#FFFFFF;
+    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
+    classDef processo fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    classDef resultado fill:#4B5563,stroke:#374151,color:#FFFFFF;
