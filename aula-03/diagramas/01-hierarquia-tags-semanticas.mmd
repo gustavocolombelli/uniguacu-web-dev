@@ -1,0 +1,27 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#1F2937',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    HTML["html"] --> HEAD["head<br/>(meta, title)"]
+    HTML --> BODY["body"]
+    BODY --> HEADER["header<br/>(logo, título)"]
+    HEADER --> NAV["nav<br/>(menu de navegação)"]
+    BODY --> MAIN["main<br/>(conteúdo único da página)"]
+    MAIN --> SECTION1["section<br/>(bloco temático 1)"]
+    MAIN --> SECTION2["section<br/>(bloco temático 2)"]
+    BODY --> FOOTER["footer<br/>(rodapé, contato)"]
+
+    classDef estrutura fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef conteudo fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class HTML,HEAD,BODY estrutura;
+    class HEADER,NAV,MAIN,SECTION1,SECTION2,FOOTER conteudo;

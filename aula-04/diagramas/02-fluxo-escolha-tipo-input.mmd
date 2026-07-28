@@ -1,0 +1,28 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#1F2937',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    Q1{"O dado é<br/>um e-mail?"}
+    Q1 -->|Sim| EMAIL["Use type=email"]
+    Q1 -->|Não| Q2{"É uma senha que<br/>deve ficar oculta<br/>na tela?"}
+    Q2 -->|Sim| PASSWORD["Use type=password"]
+    Q2 -->|Não| Q3{"É um número ou<br/>uma data?"}
+    Q3 -->|Sim| NUMDATE["Use type=number<br/>ou type=date"]
+    Q3 -->|Não| Q4{"Só pode escolher<br/>entre opções fixas?"}
+    Q4 -->|Sim| CHOICE["Use checkbox, radio<br/>ou select"]
+    Q4 -->|Não| TEXT["Use type=text"]
+
+    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
+    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class Q1,Q2,Q3,Q4 decisao;
+    class EMAIL,PASSWORD,NUMDATE,CHOICE,TEXT resultado;
