@@ -1,0 +1,34 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#1F2937',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    A["Duas regras miram<br/>o mesmo elemento"] --> B{"Alguma usa<br/>!important?"}
+    B -->|Sim| C["Essa regra vence"]
+    B -->|Não| D{"Alguma é<br/>style inline?"}
+    D -->|Sim| C
+    D -->|Não| E{"Alguma usa<br/>#id?"}
+    E -->|Sim| C
+    E -->|Não| F{"Alguma usa<br/>.classe?"}
+    F -->|Sim| C
+    F -->|Não| G{"Restam seletores<br/>de elemento (p, div...)?"}
+    G -->|Sim| C
+    G -->|Não| H["Empate: vence a regra<br/>declarada por último"]
+
+    classDef inicio fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef decisao fill:#D97706,stroke:#B45309,color:#FFFFFF;
+    classDef vence fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    classDef empate fill:#4B5563,stroke:#374151,color:#FFFFFF;
+    class A inicio;
+    class B,D,E,F,G decisao;
+    class C vence;
+    class H empate;

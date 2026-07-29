@@ -1,0 +1,33 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#1F2937',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    subgraph MARGIN["Margin — espaço fora da borda"]
+        direction TB
+        subgraph BORDER["Border — linha ao redor da caixa"]
+            direction TB
+            subgraph PADDING["Padding — espaço interno"]
+                direction TB
+                CONTENT["Content<br/>(width / height do elemento)"]
+            end
+        end
+    end
+
+    classDef content fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef padding fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    classDef border fill:#EA580C,stroke:#9A3412,color:#FFFFFF;
+    classDef margin fill:#4B5563,stroke:#374151,color:#FFFFFF;
+    class CONTENT content;
+    class PADDING padding;
+    class BORDER border;
+    class MARGIN margin;
