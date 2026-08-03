@@ -187,7 +187,7 @@ Agora é sua vez: crie três variáveis novas para descrever **um produto** (por
 
 ## 5. Infográfico-resumo
 
-<img src="diagramas/03-resumo-aula-01.svg" alt="Mapa mental resumindo a Aula 01: Internet, Cliente-servidor, URL (protocolo, domínio, caminho, query string) e Lógica computacional (variáveis, tipos de dados, operadores)" width="900">
+<img src="diagramas/03-resumo-aula-01.svg" alt="Mapa mental resumindo a Aula 01: Internet, Cliente-servidor, URL (protocolo, domínio, caminho, query string) e Lógica computacional (variáveis, tipos de dados, operadores)" width="600">
 
 *Código-fonte do diagrama: [`diagramas/03-resumo-aula-01.mmd`](diagramas/03-resumo-aula-01.mmd)*
 
