@@ -8,6 +8,10 @@ Material de aula da disciplina de Desenvolvimento Web, do curso de Engenharia de
 - **[`projeto/projeto.md`](projeto/projeto.md)** — especificação do projeto da disciplina (a Pokédex construída ao longo do semestre): [diagrama de caso de uso](projeto/diagramas/01-caso-de-uso.svg), histórias de usuário, requisitos não funcionais e a API consumida.
 - **`aula-XX/`** — material de cada encontro, publicado à medida que as aulas acontecem.
 
+## Feedback
+
+Tem algo que gostou ou que acha que poderia melhorar nas aulas? Responda o [formulário de melhoria contínua](https://forms.gle/FXZx8VVWTJAmjYSW7) — é rápido, anônimo e ajuda a ajustar o ritmo e o conteúdo das próximas aulas.
+
 ## Estrutura de arquivos
 
 ```
