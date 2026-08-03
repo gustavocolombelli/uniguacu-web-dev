@@ -1,0 +1,48 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#F8F9FA',
+  'primaryTextColor': '#1F2937',
+  'primaryBorderColor': '#4B5563',
+  'secondaryColor': '#EDEDED',
+  'secondaryTextColor': '#1F2937',
+  'tertiaryTextColor': '#374151',
+  'lineColor': '#6B7280',
+  'textColor': '#1F2937',
+  'noteBkgColor': '#F3F4F6',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#9CA3AF'
+}}}%%
+flowchart LR
+    ATOR(["👤 Visitante"])
+
+    subgraph SISTEMA["Pokédex"]
+        UC1(["Listar pokémons"])
+        UC2(["Paginar a lista"])
+        UC3(["Buscar pokémon<br/>por nome"])
+        UC4(["Ver detalhes de<br/>um pokémon"])
+        UC5(["Favoritar e<br/>desfavoritar"])
+        UC6(["Visualizar<br/>favoritos"])
+        UC7(["Persistir favoritos<br/>(localStorage)"])
+        UC8(["Feedback de<br/>carregamento e erro"])
+    end
+
+    ATOR --- UC1
+    ATOR --- UC2
+    ATOR --- UC3
+    ATOR --- UC4
+    ATOR --- UC5
+    ATOR --- UC6
+
+    UC5 -.->|"«include»"| UC7
+    UC1 -.->|"«include»"| UC8
+    UC2 -.->|"«include»"| UC8
+    UC3 -.->|"«include»"| UC8
+    UC4 -.->|"«include»"| UC8
+
+    classDef ator fill:#F3F4F6,color:#1F2937,stroke:#374151,stroke-width:1.5px;
+    classDef usocaso fill:#FFFFFF,color:#1F2937,stroke:#6B7280,stroke-width:1px;
+    classDef incluido fill:#E5E7EB,color:#1F2937,stroke:#6B7280,stroke-width:1px;
+    class ATOR ator;
+    class UC1,UC2,UC3,UC4,UC5,UC6 usocaso;
+    class UC7,UC8 incluido;
+
+    style SISTEMA fill:#FCFCFC,stroke:#9CA3AF,stroke-width:1px;
