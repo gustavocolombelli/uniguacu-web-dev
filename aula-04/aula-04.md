@@ -20,8 +20,6 @@ Na aula passada, você aprendeu a estruturar o esqueleto semântico de uma pági
 
 Hoje isso muda: vamos preencher essa estrutura com os elementos que capturam informação — formulários, campos de entrada, tabelas de dados e mídia (imagem, áudio, vídeo). É com esses elementos que a sua página passa de "folheto digital" para algo que interage de verdade com quem a visita.
 
-Essa etapa também avança a **1ª entrega do projeto profissional**: a estrutura HTML da sua aplicação, iniciada na aula 03, agora ganha os pontos de entrada de dados que ela provavelmente vai precisar (um formulário de contato, de cadastro, ou de login, por exemplo).
-
 Um detalhe importante logo de início: o HTML5 já vem com validação de formulários embutida no navegador, sem precisar de nenhuma linha de JavaScript. Boa parte da aula de hoje é sobre usar bem esses atributos nativos antes de sequer pensar em validação via código.
 
 ---
