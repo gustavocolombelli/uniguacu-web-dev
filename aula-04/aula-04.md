@@ -20,7 +20,7 @@ Na aula passada, você aprendeu a estruturar o esqueleto semântico de uma pági
 
 Hoje isso muda: vamos preencher essa estrutura com os elementos que capturam informação — formulários, campos de entrada, tabelas de dados e mídia (imagem, áudio, vídeo). É com esses elementos que a sua página passa de "folheto digital" para algo que interage de verdade com quem a visita.
 
-Essa etapa também avança a **1ª entrega do projeto profissional**: a estrutura HTML da sua aplicação, iniciada na aula 03, agora ganha os pontos de entrada de dados que ela provavelmente vai precisar (um formulário de contato, de cadastro, ou de login, por exemplo).
+Vale guardar essa aula como conteúdo para o [projeto da disciplina](../projeto/projeto.md): a Pokédex que você constrói ao longo do semestre tem um campo de busca por nome ([US03](../projeto/especificacao-funcionalidades.md#us03--buscar-pokémon-por-nome)) — um `input` de texto, no fundo — e exibe sprites de pokémons ([US01](../projeto/especificacao-funcionalidades.md#us01--listar-pokémons), [US04](../projeto/especificacao-funcionalidades.md#us04--ver-detalhes-de-um-pokémon)) usando `img`, elemento já visto na aula 03. Fica só como referência de estudo por enquanto — a implementação desses pontos na sua aplicação não é o foco de hoje.
 
 Um detalhe importante logo de início: o HTML5 já vem com validação de formulários embutida no navegador, sem precisar de nenhuma linha de JavaScript. Boa parte da aula de hoje é sobre usar bem esses atributos nativos antes de sequer pensar em validação via código.
 
@@ -89,6 +89,9 @@ Além do `<input>`, dois outros elementos completam os formulários:
 - `<textarea>` — texto livre em várias linhas.
 - `<select>` — lista suspensa de opções fixas, alternativa ao grupo de `radio` quando há muitas opções.
 
+> [!NOTE]
+> `type="text"` é justamente o tipo por trás de um campo de busca — o mesmo que a [US03](../projeto/especificacao-funcionalidades.md#us03--buscar-pokémon-por-nome) do projeto da disciplina descreve ("buscar pokémon pelo nome"). Vale ter esse tipo de campo em mente como conteúdo de estudo; ele só ganha comportamento de busca de verdade quando a aplicação tiver JavaScript, mais adiante no curso.
+
 ### 2.3 Validação nativa HTML5
 
 O navegador consegue validar boa parte de um formulário sozinho, usando atributos no próprio `<input>`:
@@ -148,6 +151,9 @@ Tabelas exibem dados organizados em linhas e colunas — não devem ser usadas p
 > [!TIP]
 > Usar `<th>` em vez de `<td>` para os cabeçalhos não é só uma questão de negrito automático: leitores de tela anunciam o cabeçalho correspondente ao navegar célula por célula, o que só funciona se a tag semântica estiver correta.
 
+> [!NOTE]
+> Bom exemplo do limite dessa tag: a listagem de pokémons do projeto da disciplina (US01) é uma grade de cards, não dado tabular, então `<table>` não é a escolha certa para ela — o [wireframe da especificação](../projeto/especificacao-funcionalidades.md#2-wireframe-de-baixa-fidelidade) mostra cards, não linhas e colunas. Guardar essa diferença evita usar `<table>` como ferramenta de layout, um erro comum.
+
 ### 2.5 Mídia: imagem, áudio e vídeo
 
 Você já viu `<img>` na aula 03 — o mesmo cuidado com `alt` vale aqui. Para áudio e vídeo, o HTML5 oferece tags nativas, sem precisar de plugins externos:
@@ -170,6 +176,9 @@ Você já viu `<img>` na aula 03 — o mesmo cuidado com `alt` vale aqui. Para �
 
 > [!TIP]
 > Assim como `alt` descreve uma imagem para quem não pode vê-la, vídeos importantes para o conteúdo do curso devem oferecer legendas (`<track kind="captions">`) sempre que possível — fora do escopo de hoje, mas vale manter em mente para acessibilidade.
+
+> [!NOTE]
+> Dos três, só `<img>` aparece no projeto da disciplina — os sprites de pokémons das histórias US01 e US04. `<audio>` e `<video>` não fazem parte do escopo da Pokédex, mas ficam como conteúdo útil para outros projetos que usem esse tipo de mídia.
 
 ---
 
