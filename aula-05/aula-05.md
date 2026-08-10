@@ -8,7 +8,7 @@
 
 **Objetivos de aprendizagem:**
 
-- Aplicar seletores CSS (tipo, classe, id, agrupamento, combinador descendente) e prever qual regra vence quando duas delas entram em conflito.
+- Escrever regras CSS válidas e aplicar seletores (tipo, classe, id, agrupamento, combinador descendente) para estilizar elementos específicos de uma página HTML.
 - Explicar e aplicar o modelo de caixas (box model) para controlar espaçamento, borda e dimensão de qualquer elemento HTML.
 - Estilizar cores, tipografia e usar corretamente as unidades de medida `px`, `%` e `rem` na estilização de uma página real.
 
@@ -16,20 +16,33 @@
 
 ## 1. Contextualização
 
-Até a aula passada, você estruturou formulários, tabelas e mídia em HTML — mas tudo isso ainda aparece na tela com a aparência padrão que cada navegador aplica sozinho: fonte genérica, cores neutras, espaçamento inconsistente. O HTML descreve *o quê* existe na página; falta a linguagem que descreve *como* ela deve parecer.
+Toda página web se apoia em três linguagens, cada uma cuidando de uma responsabilidade diferente: **HTML** define a estrutura e o conteúdo (o que existe — títulos, parágrafos, formulários); **CSS** define a apresentação (como aparece — cores, espaçamento, tipografia, layout); **JavaScript** define o comportamento (como reage — cliques, validações dinâmicas, atualizações sem recarregar a página). Até a aula passada você trabalhou só com a primeira: estruturou formulários, tabelas e mídia em HTML, mas tudo isso ainda aparece na tela com a aparência padrão que cada navegador aplica sozinho.
 
-É aqui que entra o **CSS (Cascading Style Sheets)**. A partir de hoje, você começa a dar identidade visual à mesma estrutura HTML que já construiu — o formulário de inscrição da aula 04, por exemplo, vai continuar tendo os mesmos campos e a mesma validação nativa, só que com aparência intencional em vez de padrão de navegador.
-
-Esse trabalho também inicia a **2ª entrega do projeto profissional** desta etapa: uma interface estilizada e responsiva. A parte "responsiva" ainda não é hoje — ela depende de Flexbox e Grid, vistos nas próximas aulas —, mas a base de tudo isso (seletores, box model, cores, tipografia e unidades de medida) é o que você aprende agora.
-
-> [!NOTE]
-> A palavra "*Cascading*" no nome CSS não é decorativa: quando duas regras miram o mesmo elemento, existe uma ordem previsível de quem vence. Entender essa ordem — a **especificidade** — evita boa parte da frustração de "por que meu CSS não está funcionando?".
+É aqui que entra o **CSS (Cascading Style Sheets)**, a segunda dessas três linguagens. A partir de hoje, você começa a dar identidade visual à mesma estrutura HTML que já construiu — o formulário de inscrição da aula 04, por exemplo, vai continuar tendo os mesmos campos e a mesma validação nativa, só que com aparência intencional em vez de padrão de navegador. (A terceira linguagem, JavaScript, entra mais adiante na trilha, quando a página precisar reagir a ações do usuário.)
 
 ---
 
 ## 2. Conteúdo teórico incremental
 
-### 2.1 Onde o CSS entra na página
+### 2.1 Anatomia de uma regra CSS
+
+Toda regra CSS segue sempre a mesma estrutura, não importa o que ela estilize:
+
+```css
+p {
+  color: blue;
+}
+```
+
+- **Seletor** (`p`) — escolhe *quais* elementos da página recebem a regra. Falamos mais sobre isso já na próxima seção.
+- **Bloco de declaração** (`{ ... }`) — tudo entre as chaves, onde ficam as instruções de estilo daquele seletor.
+- **Propriedade** (`color`) — *o quê* está sendo alterado (cor do texto, tamanho da fonte, espaçamento etc.).
+- **Valor** (`blue`) — *para qual* configuração aquela propriedade muda.
+- Cada declaração termina com `;`, mesmo que seja a última do bloco — é o hábito que evita erros quando uma nova linha é adicionada depois.
+
+Uma folha de estilo é só uma sequência dessas regras, uma atrás da outra, cada uma podendo mirar um seletor diferente.
+
+### 2.2 Onde o CSS entra na página
 
 Existem três formas de aplicar CSS a um documento HTML:
 
@@ -49,7 +62,7 @@ Existem três formas de aplicar CSS a um documento HTML:
 > [!IMPORTANT]
 > Prefira sempre o arquivo externo (`<link>`). Ele separa estrutura (HTML) de apresentação (CSS), permite reutilizar o mesmo arquivo em várias páginas e é o único dos três que o navegador consegue cachear separadamente. Inline é o mais difícil de manter — é fácil espalhar `style="..."` por dezenas de elementos e nunca mais achar onde uma cor foi definida.
 
-### 2.2 Seletores CSS
+### 2.3 Seletores CSS
 
 Um seletor escolhe **quais** elementos uma regra afeta. Os mais usados:
 
@@ -82,17 +95,6 @@ button {
 > [!TIP]
 > Um id só pode existir **uma vez** por página (é um identificador único), enquanto uma classe pode se repetir em quantos elementos forem necessários. Use classe como padrão; reserve id para casos que realmente são únicos na página, como uma âncora de navegação.
 
-### 2.3 Especificidade: quem vence quando duas regras conflitam
-
-Se `#botao-inscrever { background-color: blue; }` e `.formulario button { background-color: green; }` miram o mesmo botão, qual cor prevalece? O CSS resolve isso por **especificidade** — cada tipo de seletor tem um peso, e o de maior peso vence, independente da ordem no arquivo.
-
-<img src="diagramas/02-especificidade-seletores.svg" alt="Fluxograma de decisão de especificidade CSS: important vence primeiro, depois estilo inline, depois id, depois classe, depois seletor de elemento; em empate, vence a regra declarada por último no arquivo" height="600">
-
-*Código-fonte do diagrama: [`diagramas/02-especificidade-seletores.mmd`](diagramas/02-especificidade-seletores.mmd)*
-
-> [!WARNING]
-> `!important` força uma regra a vencer mesmo contra um id — mas isso quebra a previsibilidade da cascata: a próxima pessoa que precisar sobrescrever aquele estilo só consegue com outro `!important`, e o CSS vira uma corrida de quem grita mais alto. Trate `!important` como último recurso, não como primeira solução para "meu CSS não aplicou".
-
 ### 2.4 Box model
 
 Todo elemento HTML é renderizado como uma caixa retangular, composta por quatro camadas, de dentro para fora:
@@ -116,7 +118,7 @@ Todo elemento HTML é renderizado como uma caixa retangular, composta por quatro
 ```
 
 > [!CAUTION]
-> Por padrão (`box-sizing: content-box`), `width` define só o tamanho do *content* — `padding` e `border` são somados por cima. O `.cartao` acima, portanto, ocupa `300 + 16*2 + 1*2 = 335px` de largura total, não 300px. Isso surpreende quem espera que `width: 300px` seja a largura final da caixa.
+> Por padrão (`box-sizing: content-box`), `width` define só o tamanho do *content* — `padding` e `border` são somados por cima. O `.cartao` acima, portanto, ocupa `300 + 16*2 + 1*2 = 334px` de largura total, não 300px. Isso surpreende quem espera que `width: 300px` seja a largura final da caixa.
 
 ```css
 /* Corrige a surpresa acima: padding e border passam a caber DENTRO dos 300px */
@@ -203,7 +205,7 @@ html {
 
 ## 3. Diagramas
 
-Os dois diagramas desta aula já apareceram no contexto das seções 2.3 e 2.4 — a especificidade de seletores e as camadas do box model, respectivamente, por serem mais fáceis de entender lado a lado com a explicação teórica correspondente.
+O diagrama do box model já apareceu no contexto da seção 2.4, por ser mais fácil de entender lado a lado com a explicação teórica correspondente.
 
 ---
 
@@ -279,7 +281,7 @@ button {
 }
 ```
 
-**Antes de continuar, responda:** existe uma regra `button { background-color: gray; }` e uma regra `#botao-inscrever { background-color: #2563EB; }`, ambas afetando o mesmo botão. Qual cor de fundo você acha que o botão de envio vai exibir, e por quê essa regra vence a outra?
+**Antes de continuar, responda:** existe uma regra `button { background-color: gray; }` e uma regra `#botao-inscrever { background-color: #2563EB; }`, ambas afetando o mesmo botão. Qual das duas você acha que decide a cor de fundo final, a que mira *todo* botão ou a que mira *só aquele* botão pelo id?
 
 ### Execute e confira
 
@@ -295,7 +297,7 @@ e cantos arredondados. Os labels aparecem em negrito, acima
 de cada campo, e os inputs ocupam 100% da largura do cartão.
 ```
 
-O seletor `#botao-inscrever` (id) tem especificidade maior que o seletor `button` (tipo) — por isso a cor azul vence, mesmo a regra de `button` aparecendo depois no arquivo. Se a ordem decidisse tudo, o cinza teria vencido; quem decide primeiro é o peso do seletor, não a posição no CSS (ver seção 2.3).
+O seletor `#botao-inscrever` mira só aquele botão específico, enquanto `button` mira qualquer botão da página — por isso a regra do id vence e o botão fica azul, mesmo `button` aparecendo depois no arquivo. Um seletor mais direcionado (id) tende a vencer um seletor mais genérico (tipo) quando os dois miram o mesmo elemento.
 
 ### Entendendo o código linha a linha
 
@@ -306,7 +308,7 @@ O seletor `#botao-inscrever` (id) tem especificidade maior que o seletor `button
   - `.formulario-inscricao` usa `margin: 2rem auto` — `2rem` no topo/base e `auto` nas laterais, o truque clássico para centralizar um bloco de largura fixa horizontalmente.
   - `.formulario-inscricao input` é um combinador descendente: só afeta `input` que esteja dentro de um elemento com essa classe, sem alterar campos de outro formulário na mesma página.
 - **Etapa 4 — id vencendo a regra genérica**
-  - `#botao-inscrever` tem mais peso que `button` (seção 2.3), por isso a cor azul definida aqui vence a regra cinza genérica, mesmo essa última vindo primeiro no arquivo.
+  - `#botao-inscrever` mira um único elemento específico, por isso a cor azul definida aqui vence a regra cinza genérica de `button`, mesmo essa última vindo primeiro no arquivo.
 
 ### Agora modifique
 
@@ -320,12 +322,12 @@ Adicione a regra `#botao-inscrever:hover { background-color: #1D4ED8; }` (uma co
 
 ## 5. Resumo
 
-<img src="diagramas/03-resumo-aula-05.svg" alt="Mapa mental resumindo a Aula 05: Seletores (tipo, classe, id, especificidade), Box model (content, padding, border, margin, box-sizing), Cores (keywords, hex, rgb, hsl), Tipografia (font-family, font-size, line-height) e Unidades de medida (px, %, rem)" width="600">
+<img src="diagramas/03-resumo-aula-05.svg" alt="Mapa mental resumindo a Aula 05: Anatomia de uma regra CSS (seletor, declaração, propriedade, valor), Seletores (tipo, classe, id), Box model (content, padding, border, margin, box-sizing), Cores (keywords, hex, rgb, hsl), Tipografia (font-family, font-size, line-height) e Unidades de medida (px, %, rem)" width="600">
 
 *Código-fonte do diagrama: [`diagramas/03-resumo-aula-05.mmd`](diagramas/03-resumo-aula-05.mmd)*
 
-- Seletores (tipo, classe, id, universal, agrupamento, combinador descendente) escolhem **quais** elementos uma regra CSS afeta.
-- Quando duas regras conflitam, vence a de maior **especificidade** (`!important` > inline > id > classe > tipo); em empate, vence a última declarada no arquivo.
+- Uma regra CSS é sempre `seletor { propriedade: valor; }` — o seletor escolhe **quais** elementos, a propriedade escolhe **o quê** muda.
+- Seletores (tipo, classe, id, universal, agrupamento, combinador descendente) escolhem quais elementos uma regra CSS afeta; um seletor mais direcionado (id) tende a vencer um mais genérico (tipo) quando os dois miram o mesmo elemento.
 - Todo elemento é uma caixa com quatro camadas — content, padding, border e margin —, e `box-sizing: border-box` evita que padding/border aumentem o tamanho final além do `width` declarado.
 - Cores podem ser escritas como palavra-chave, hexadecimal, `rgb()` ou `hsl()` — formatos diferentes para o mesmo valor.
 - `px` é absoluto; `%` é relativo ao elemento pai; `rem` é relativo ao `font-size` da raiz (`<html>`) — a escolha certa depende de o valor dever ou não se adaptar ao contexto.

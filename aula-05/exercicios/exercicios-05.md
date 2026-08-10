@@ -2,7 +2,7 @@
 
 [Desenvolvimento Web](../../README.md) > [Aula 05](../aula-05.md) > Exercícios
 
-Lista de exercícios de reforço, baseada inteiramente no conteúdo da [Aula 05](../aula-05.md): seletores CSS, especificidade, box model, cores, tipografia e unidades de medida (`px`, `%`, `rem`).
+Lista de exercícios de reforço, baseada inteiramente no conteúdo da [Aula 05](../aula-05.md): anatomia de uma regra CSS, seletores, box model, cores, tipografia e unidades de medida (`px`, `%`, `rem`).
 
 Tente resolver cada exercício sozinho antes de abrir a sugestão de solução.
 
@@ -19,18 +19,18 @@ p { color: blue; }
 
 Qual cor o texto desse parágrafo vai exibir, e por quê?
 
-- **A.** Azul, porque o seletor de tipo (`p`) é mais específico que um seletor de classe.
-- **B.** Vermelho, porque um seletor de classe tem especificidade maior que um seletor de tipo.
+- **A.** Azul, porque o seletor de tipo (`p`) afeta todo parágrafo da página, então "vale mais".
+- **B.** Vermelho, porque um seletor de classe mira um grupo específico de elementos, e vence um seletor de tipo genérico.
 - **C.** Uma mistura entre azul e vermelho, já que o navegador combina as duas regras conflitantes.
 - **D.** Vermelho, mas só porque `.destaque` foi declarada depois de `p` no arquivo — se a ordem fosse invertida, o azul venceria.
 
 <details>
 <summary>Resposta</summary>
 
-Alternativa **B**. Um seletor de classe (especificidade 0-1-0) sempre vence um seletor de tipo (especificidade 0-0-1), independente da ordem em que as regras aparecem no arquivo.
+Alternativa **B**. Um seletor de classe mira só os elementos marcados com aquela classe, enquanto o seletor de tipo (`p`) mira *todo* parágrafo da página — o mais direcionado vence, independente da ordem em que as regras aparecem no arquivo (igual ao caso de `#botao-inscrever` vencendo `button` na seção 4 da aula).
 
 > [!IMPORTANT]
-> A alternativa D é um erro conceitual comum: a ordem no arquivo só decide o vencedor quando as regras têm a **mesma** especificidade (empate). Aqui não há empate — `.destaque` já venceria mesmo declarada antes de `p`.
+> A alternativa D é um erro conceitual comum: a ordem no arquivo só decide o vencedor quando as duas regras usam o **mesmo tipo** de seletor (empate). Aqui não há empate — `.destaque` já venceria mesmo declarada antes de `p`.
 
 </details>
 
@@ -61,7 +61,7 @@ O seletor com combinador descendente (`.alerta span`) sempre abre o bloco antes 
 
 ---
 
-**2.** As três regras abaixo têm exatamente a mesma especificidade (mesmo seletor de tipo `p`). Reordene-as de forma que, no final, o parágrafo apareça com a cor **verde**.
+**2.** As três regras abaixo usam exatamente o mesmo seletor (`p`), então nenhuma delas é mais direcionada que a outra. Reordene-as de forma que, no final, o parágrafo apareça com a cor **verde**.
 
 ```css
 p { color: green; }
@@ -78,17 +78,21 @@ p { color: blue; }
 p { color: green; }
 ```
 
-Quando duas ou mais regras têm a mesma especificidade, vence a que foi declarada **por último** no arquivo — por isso a regra verde precisa ficar na última posição.
+Quando duas ou mais regras usam o mesmo seletor, vence a que foi declarada **por último** no arquivo — por isso a regra verde precisa ficar na última posição.
 
 </details>
 
 ---
 
-**3.** Um botão tem `style="background-color: gray;"` diretamente no HTML, e também é afetado por esta regra em um arquivo `.css` externo:
+**3.** Um botão tem `class="botao"` e também `id="btn-cancelar"`. As duas regras abaixo, na mesma folha de estilo, o afetam:
 
 ```css
-#botao-principal {
-  background-color: blue;
+.botao {
+  background-color: gray;
+}
+
+#btn-cancelar {
+  background-color: red;
 }
 ```
 
@@ -97,7 +101,7 @@ Sem testar no navegador, explique qual cor de fundo o botão vai exibir.
 <details>
 <summary>Sugestão de solução</summary>
 
-Cinza. Um estilo `inline` (escrito direto no atributo `style`) tem especificidade maior que qualquer seletor de id, classe ou tipo em um arquivo `.css` — ele só perde para uma regra com `!important`.
+Vermelho. `#btn-cancelar` mira um único elemento específico (o id), enquanto `.botao` pode se repetir em vários botões da página — o seletor mais direcionado vence, o mesmo raciocínio de `#botao-inscrever` vencendo `button` na seção 4 da aula.
 
 </details>
 
