@@ -1,0 +1,25 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    subgraph ROW["flex-direction: row (padrão) — eixo principal na horizontal"]
+        direction LR
+        R1["Item 1"] --> R2["Item 2"] --> R3["Item 3"]
+    end
+    subgraph COLUMN["flex-direction: column — eixo principal na vertical"]
+        direction TB
+        C1["Item 1"] --> C2["Item 2"] --> C3["Item 3"]
+    end
+
+    classDef item fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    class R1,R2,R3,C1,C2,C3 item;

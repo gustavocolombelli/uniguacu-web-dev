@@ -92,9 +92,6 @@ button {
 }
 ```
 
-> [!TIP]
-> Um id só pode existir **uma vez** por página (é um identificador único), enquanto uma classe pode se repetir em quantos elementos forem necessários. Use classe como padrão; reserve id para casos que realmente são únicos na página, como uma âncora de navegação.
-
 ### 2.4 Box model
 
 Todo elemento HTML é renderizado como uma caixa retangular, composta por quatro camadas, de dentro para fora:
