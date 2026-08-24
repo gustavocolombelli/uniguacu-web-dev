@@ -1,0 +1,30 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    subgraph HTML["index.html — está em /projeto/"]
+        direction TB
+        H1["href=&quot;resources/css/style.css&quot;"]
+    end
+    H1 -->|"caminho relativo ao HTML"| R1["/projeto/resources/css/style.css"]
+
+    subgraph CSS["style.css — está em /projeto/resources/css/"]
+        direction TB
+        C1["url(&quot;../img/logo.svg&quot;)"]
+    end
+    C1 -->|"caminho relativo ao CSS, não ao HTML"| R2["/projeto/resources/img/logo.svg"]
+
+    classDef arquivo fill:#EDEDEB,stroke:#C9C8C2,color:#2C2C2A;
+    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class H1,C1 arquivo;
+    class R1,R2 resultado;

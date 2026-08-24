@@ -1,0 +1,33 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280'
+}}}%%
+flowchart TD
+    subgraph A["&lt;script&gt; no &lt;head&gt;, sem defer"]
+        direction LR
+        A1["Parsing do HTML<br/>(início)"] --> A2["⏸ pausa:<br/>baixa e executa o script"] --> A3["Parsing do HTML<br/>(continua)"]
+    end
+    subgraph B["&lt;script&gt; no fim do &lt;body&gt;"]
+        direction LR
+        B1["Parsing do HTML<br/>(completo, DOM pronto)"] --> B2["Baixa e executa<br/>o script"]
+    end
+    subgraph D["&lt;script defer&gt; no &lt;head&gt;"]
+        direction LR
+        D1["Parsing do HTML<br/>(sem pausar)"] --> D2["Download do script<br/>em paralelo"]
+        D1 --> D3["HTML termina de parsear"]
+        D2 -.espera.-> D4["Executa o script<br/>(na ordem declarada)"]
+        D3 --> D4
+    end
+
+    classDef normal fill:#EDEDEB,stroke:#C9C8C2,color:#2C2C2A;
+    classDef bloqueio fill:#D85A30,stroke:#A8431F,color:#FFFFFF;
+    classDef paralelo fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class A1,A3,B1,B2,D1,D3 normal;
+    class A2 bloqueio;
+    class D2,D4 paralelo;

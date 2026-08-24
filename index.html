@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray
+        }
+
+        p{
+            color: blue;
+        }
+
+        h1{
+            color: red;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        h2{
+            color: aqua;
+        }
+
+
+        #id-texto-h6{
+            color: green;
+        }
+
+        .minha-classe-h2-personalizada{
+            color:rgb(225, 7, 228)
+        }
+
+        div{
+           
+            width: 50px;
+            height: 50px;
+        }
+
+        #div-1{
+             background-color: rgb(16, 13, 13);
+        }
+
+        #div-2{ background-color: aqua;}
+        #div-3{
+            background-color: blueviolet;
+            height: 95px;
+        }
+
+        .class-div-3{
+            height: 250;
+        }
+
+        #div-menor{
+            height: 15px ;
+            width: 25px;
+            background-color: red;
+        }
+
+        td{
+            background-color: black;
+            width: 50px;
+            height: 50px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* Exercício Flexbox */
+        .cards-container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .card{
+            flex: 1 1 150px;
+            background-color: #2563EB;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .lista-flex{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .lista-flex li{
+            background-color: #eee;
+            color: #1F2937;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+                <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div id="div-1"><div id="div-menor"></div>
+    <div id="div-2"></div>
+    <div id="div-3"></div>
+    <div style="background-color: cadetblue;"></div>
+
+
+    <p>Olá!!!!!!!!!!!!!!!!!!!</p>
+    <h1>TEXTO H1</h1>
+    <h2 class="minha-classe-h2-personalizada">TEXTO MOSTRANDO H2</h2>
+    <h2>TEXTO MOSTRANDO H2</h2>
+    <h2>TEXTO MOSTRANDO H2</h2>
+
+    <h6 id="id-texto-h6">TEXTO H6 ITALICO</h6>
+    <h6 id="id-texto-h6">TEXTO H6 ITALICO</h6>
+    <h6>TEXTO H6 ITALICO</h6>
+    <h6 id="id-texto-h6">TEXTO H6 ITALICO</h6>
+
+    <h2>Exercício Flexbox</h2>
+
+    <!-- cards com flex-1: dividem o espaço igualmente e quebram de linha quando não cabem -->
+    <div class="cards-container">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <div class="card">Card 5</div>
+    </div>
+
+    <!-- lista horizontal que também quebra de linha em telas estreitas -->
+    <ul class="lista-flex">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+    </ul>
+</body>
+</html>

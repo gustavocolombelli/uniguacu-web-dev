@@ -1,0 +1,27 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280'
+}}}%%
+flowchart LR
+    H["HTML recebido"] --> HP["Parsing do HTML"] --> DOM["DOM"]
+    C["CSS recebido<br/>(via link)"] --> CP["Parsing do CSS"] --> CSSOM["CSSOM"]
+    DOM --> RT["Render Tree<br/>(DOM + CSSOM)"]
+    CSSOM --> RT
+    RT --> L["Layout<br/>(calcula posição e tamanho)"]
+    L --> P["Paint<br/>(desenha os pixels)"]
+    P --> S["Página visível na tela"]
+
+    classDef entrada fill:#EDEDEB,stroke:#C9C8C2,color:#2C2C2A;
+    classDef processo fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef arvore fill:#7C3AED,stroke:#6D28D9,color:#FFFFFF;
+    classDef final fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class H,C entrada;
+    class HP,CP,L,P processo;
+    class DOM,CSSOM,RT arvore;
+    class S final;

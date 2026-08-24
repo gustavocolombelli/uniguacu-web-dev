@@ -1,0 +1,31 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+flowchart TD
+    H["cabecalho<br/>grid-column: 1 / 3"]
+    subgraph LINHA["colunas: 220px 1fr — linhas de grade 1, 2 e 3"]
+        direction LR
+        S["lateral<br/>coluna 1 (posição automática)"]
+        Mn["conteudo<br/>coluna 2 (posição automática)"]
+    end
+    F["rodape<br/>grid-column: 1 / 3"]
+    H --> LINHA --> F
+
+    classDef header fill:#7C3AED,stroke:#6D28D9,color:#FFFFFF;
+    classDef main fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef sidebar fill:#0891B2,stroke:#0E7490,color:#FFFFFF;
+    classDef footer fill:#4B5563,stroke:#374151,color:#FFFFFF;
+    class H header;
+    class Mn main;
+    class S sidebar;
+    class F footer;

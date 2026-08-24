@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Flexbox</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background-color: #F3F4F6;
+            color: #1F2937;
+            margin: 0;
+            padding: 20px 40px 60px;
+        }
+
+        h1 {
+            color: #2563EB;
+        }
+
+        p.intro {
+            color: #4B5563;
+            max-width: 700px;
+        }
+
+        section {
+            background-color: white;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        section p {
+            color: #4B5563;
+        }
+
+        code {
+            background-color: #EAB308;
+            color: #1F2937;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* container onde o aluno vê o resultado do exercício */
+        .container {
+            display: flex;
+            gap: 10px;
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            padding: 10px;
+            min-height: 60px;
+        }
+
+        .caixa {
+            background-color: #2563EB;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        details {
+            margin-top: 12px;
+            background-color: #FEF3C7;
+            border: 1px solid #D97706;
+            border-radius: 6px;
+            padding: 10px 14px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #92400E;
+        }
+
+        details pre {
+            background-color: #1F2937;
+            color: #F3F4F6;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        /* ===== resultado de cada exercício (só para conferência) ===== */
+
+        /* 2 */
+        .ex2 {
+            flex-direction: column;
+        }
+
+        /* 3 */
+        .ex3 {
+            justify-content: center;
+        }
+
+        /* 4 */
+        .ex4 {
+            justify-content: space-between;
+        }
+
+        /* 5 */
+        .ex5 {
+            height: 120px;
+            align-items: center;
+        }
+
+        /* 6 */
+        .ex6 {
+            height: 120px;
+            align-items: flex-start;
+        }
+        .ex6 .destaque {
+            align-self: flex-end;
+            background-color: #DB2777;
+        }
+
+        /* 7 */
+        .ex7 {
+            flex-wrap: wrap;
+        }
+        .ex7 .caixa {
+            width: 120px;
+            flex-shrink: 0;
+        }
+
+        /* 8 */
+        .ex8 {
+            gap: 24px;
+        }
+
+        /* 9 */
+        .ex9 .caixa {
+            flex: 1;
+            background-color: #16A34A;
+        }
+
+        /* 10 */
+        .ex10 .cresce-2 {
+            flex-grow: 2;
+            background-color: #0F766E;
+        }
+        .ex10 .cresce-1 {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercícios de Flexbox</h1>
+    <p class="intro">Baseados nos exemplos de <code>flex-box.html</code>. Cada exercício mostra o ponto de partida (container ainda sem a propriedade pedida) e o enunciado do que fazer. Tente escrever o CSS sozinho antes de abrir a solução.</p>
+
+    <section>
+        <h2>1. Ativando o Flexbox</h2>
+        <p>O container abaixo tem três <code>&lt;div&gt;</code>, mas ainda sem <code>display: flex</code> — por isso continuam empilhadas. Adicione a propriedade que falta para colocá-las lado a lado.</p>
+        <div class="container" style="display: block;">
+            <div class="caixa" style="width: 80px;">1</div>
+            <div class="caixa" style="width: 80px;">2</div>
+            <div class="caixa" style="width: 80px;">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>2. Empilhando na vertical</h2>
+        <p>Troque a direção dos itens abaixo para que fiquem um embaixo do outro, em vez de lado a lado.</p>
+        <div class="container ex2">
+            <div class="caixa">1</div>
+            <div class="caixa">2</div>
+            <div class="caixa">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+  flex-direction: column;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>3. Centralizando no meio</h2>
+        <p>Faça os três itens ficarem agrupados no centro do container, com espaço vazio igual nas duas pontas.</p>
+        <div class="container ex3">
+            <div class="caixa">1</div>
+            <div class="caixa">2</div>
+            <div class="caixa">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+  justify-content: center;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>4. Espalhando nas pontas</h2>
+        <p>Faça o primeiro item colar na borda esquerda, o último colar na borda direita, e o espaço sobrar entre eles.</p>
+        <div class="container ex4">
+            <div class="caixa">1</div>
+            <div class="caixa">2</div>
+            <div class="caixa">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+  justify-content: space-between;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>5. Centralizando na vertical</h2>
+        <p>O container abaixo é mais alto (<code>120px</code>) de propósito. Centralize os itens verticalmente dentro dele.</p>
+        <div class="container ex5">
+            <div class="caixa">1</div>
+            <div class="caixa">2</div>
+            <div class="caixa">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+  height: 120px;
+  align-items: center;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>6. Alinhando um item sozinho</h2>
+        <p>Os itens estão alinhados no topo (<code>align-items: flex-start</code>). Faça só o item rosa (<code>.destaque</code>) descer até a base do container, sem mudar a posição dos outros dois.</p>
+        <div class="container ex6">
+            <div class="caixa">1</div>
+            <div class="caixa destaque">2</div>
+            <div class="caixa">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.destaque {
+  align-self: flex-end;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>7. Quebrando de linha</h2>
+        <p>Os cinco itens abaixo não cabem numa linha só. Faça os que sobrarem quebrarem para a linha seguinte, em vez de encolher.</p>
+        <div class="container ex7">
+            <div class="caixa">1</div>
+            <div class="caixa">2</div>
+            <div class="caixa">3</div>
+            <div class="caixa">4</div>
+            <div class="caixa">5</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+  flex-wrap: wrap;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>8. Espaço entre os itens</h2>
+        <p>Aumente o espaço entre os três itens abaixo para <code>24px</code>, sem usar <code>margin</code> em nenhum deles.</p>
+        <div class="container ex8">
+            <div class="caixa">1</div>
+            <div class="caixa">2</div>
+            <div class="caixa">3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.container {
+  display: flex;
+  gap: 24px;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>9. Cards de largura igual</h2>
+        <p>Sem declarar nenhum <code>width</code>, faça os três cards abaixo dividirem o espaço do container em partes exatamente iguais.</p>
+        <div class="container ex9">
+            <div class="caixa">Card 1</div>
+            <div class="caixa">Card 2</div>
+            <div class="caixa">Card 3</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.caixa {
+  flex: 1;
+}</pre>
+        </details>
+    </section>
+
+    <section>
+        <h2>10. Um card maior que os outros</h2>
+        <p>Os três cards abaixo têm <code>flex-grow: 1</code>. Faça o card do meio (<code>.cresce-2</code>) crescer o dobro dos outros dois.</p>
+        <div class="container ex10">
+            <div class="caixa cresce-1">flex-grow: 1</div>
+            <div class="caixa cresce-2">flex-grow: ?</div>
+            <div class="caixa cresce-1">flex-grow: 1</div>
+        </div>
+        <details>
+            <summary>Ver solução</summary>
+            <pre>.cresce-2 {
+  flex-grow: 2;
+}</pre>
+        </details>
+    </section>
+
+</body>
+</html>

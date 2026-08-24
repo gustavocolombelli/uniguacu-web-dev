@@ -1,0 +1,32 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'cScale0': '#2563EB', 'cScaleLabel0': '#FFFFFF',
+  'cScale1': '#7C3AED', 'cScaleLabel1': '#FFFFFF',
+  'cScale2': '#16A34A', 'cScaleLabel2': '#FFFFFF',
+  'cScale3': '#EA580C', 'cScaleLabel3': '#FFFFFF'
+}}}%%
+mindmap
+  root((Aula 08<br/>Ciclo de Renderização))
+    Parsing
+      HTML vira DOM
+      CSS vira CSSOM
+    Render Tree
+      combina DOM + CSSOM
+      só nós visíveis
+    Layout
+      calcula posição e tamanho
+      também chamado reflow
+    Paint
+      desenha os pixels na tela
+      último passo
+    Script e parsing
+      sem defer no head bloqueia
+      fim do body espera o DOM
+      defer baixa em paralelo
