@@ -1,0 +1,22 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280'
+}}}%%
+flowchart LR
+    C["pessoa.getIdade()"] --> E["JS executa o método getIdade"]
+    E --> T["dentro do método,<br/>this vira o próprio objeto pessoa"]
+    T --> A["this.idade lê o atributo<br/>idade de pessoa"]
+    A --> R["return 25"]
+
+    classDef chamada fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef interno fill:#7C3AED,stroke:#6D28D9,color:#FFFFFF;
+    classDef resultado fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class C chamada;
+    class E,T,A interno;
+    class R resultado;

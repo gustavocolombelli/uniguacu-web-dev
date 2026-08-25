@@ -1,0 +1,16 @@
+Desafio prático: criar e manipular uma lista (array) de objetos, 
+iterar sobre ela e aplicar uma lógica de filtragem/agrupamento 
+para encontrar o livro com maior pontuação em cada categoria.
+
+Desafio: O Melhor Livro por Categoria
+const l1 = {titulo:"", categoria:"", pontuacao:n}
+const l2 = {titulo:"", categoria:"", pontuacao:n}
+const l3 = {titulo:"", categoria:"", pontuacao:n}
+const ln = {titulo:"", categoria:"", pontuacao:n}
+Objetivo
+-Crie um array de objetos onde cada objeto representa um livro com 
+titulo, categoria e pontuacao (de 0 a 10), 
+
+-escreva uma função que percorra o array e retorne um novo 
+objeto contendo apenas o livro com maior pontuação 
+para uma categoria específica informada

@@ -1,0 +1,31 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280'
+}}}%%
+flowchart TD
+    O["objeto pessoa"]
+    subgraph ATR["Atributos (dados)"]
+        direction LR
+        N["nome: 'Ana'"]
+        I["idade: 25"]
+    end
+    subgraph MET["Métodos (comportamento)"]
+        direction LR
+        GN["getNome() { return this.nome }"]
+        GI["getIdade() { return this.idade }"]
+    end
+    O --> ATR
+    O --> MET
+
+    classDef objeto fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef atributo fill:#EDEDEB,stroke:#C9C8C2,color:#2C2C2A;
+    classDef metodo fill:#7C3AED,stroke:#6D28D9,color:#FFFFFF;
+    class O objeto;
+    class N,I atributo;
+    class GN,GI metodo;
