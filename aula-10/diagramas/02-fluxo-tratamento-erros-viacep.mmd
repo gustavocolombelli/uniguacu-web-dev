@@ -1,0 +1,31 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280'
+}}}%%
+flowchart TD
+    START(["Formulário enviado<br/>try { ... }"]) --> FETCH["await fetch(url)"]
+    FETCH -- "falha de rede<br/>(sem internet, DNS...)" --> CATCH["catch (erro)<br/>exibe mensagem de erro"]
+    FETCH -- "resposta recebida" --> OK{"response.ok?<br/>status 200-299"}
+    OK -- "não (ex.: CEP mal formatado)" --> T1["throw new Error('CEP inválido')"]
+    T1 --> CATCH
+    OK -- "sim" --> PARSE["const dados = await response.json()"]
+    PARSE --> ERRO{"dados.erro === true?<br/>(CEP bem formatado mas inexistente)"}
+    ERRO -- "sim" --> T2["throw new Error('CEP não encontrado')"]
+    T2 --> CATCH
+    ERRO -- "não" --> SHOW["exibe o endereço na tela"]
+
+    classDef inicio fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef decisao fill:#7C3AED,stroke:#6D28D9,color:#FFFFFF;
+    classDef erro fill:#EA580C,stroke:#C2410C,color:#FFFFFF;
+    classDef sucesso fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    class START inicio;
+    class FETCH,PARSE inicio;
+    class OK,ERRO decisao;
+    class T1,T2,CATCH erro;
+    class SHOW sucesso;
