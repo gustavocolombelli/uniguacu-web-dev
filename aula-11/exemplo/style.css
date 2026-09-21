@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 16px;
+  color: #2c2c2a;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+section {
+  border: 1px solid #c9c8c2;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+input {
+  padding: 6px 8px;
+  border: 1px solid #c9c8c2;
+  border-radius: 4px;
+  margin: 4px 4px 4px 0;
+}
+
+button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button.perigo {
+  background-color: #ea580c;
+}
+
+.dica {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+#saida {
+  background-color: #ededeb;
+  border-left: 4px solid #2563eb;
+  padding: 12px 16px;
+  min-height: 20px;
+}

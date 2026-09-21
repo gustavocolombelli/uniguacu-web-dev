@@ -461,4 +461,4 @@ Pratique os conceitos desta aula na lista de exercícios dedicada, com questão 
 
 ## 8. Próxima aula
 
-`await` já deixou claro que uma requisição não termina na mesma linha em que começa — o código "espera" antes de seguir. A próxima aula formaliza exatamente esse mecanismo: a diferença entre execução **síncrona** e **assíncrona**, o que é o *event loop* e a *call stack* do JavaScript, e como isso explica por que `fetch()` nunca bloqueia a página enquanto espera a resposta de um servidor.
+Todas as requisições desta aula fizeram uma coisa só: **buscar** dados. A próxima aula apresenta os outros métodos HTTP — `POST` para criar, `PATCH` para alterar e `DELETE` para remover — e mostra como enviar dados para uma API, tanto pela URL quanto pelo corpo da requisição, construindo um cadastro completo em cima da API da Pokédex.

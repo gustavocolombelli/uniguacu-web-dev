@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokédex — Treinadores</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Pokédex — Cadastro de treinadores</h1>
+
+  <section>
+    <h2>POST — criar treinador</h2>
+    <form id="formCriar">
+      <input type="text" id="nome" placeholder="Nome" required>
+      <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="date" id="nascimento" required>
+      <button type="submit">Criar</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Guid do treinador</h2>
+    <p class="dica">O POST devolve este código; GET, PATCH e DELETE usam ele para saber de quem estamos falando.</p>
+    <input type="text" id="guid" placeholder="Guid do treinador">
+  </section>
+
+  <section>
+    <h2>GET — buscar treinador</h2>
+    <button id="btnBuscar">Buscar</button>
+  </section>
+
+  <section>
+    <h2>PATCH — alterar o primeiro nome</h2>
+    <input type="text" id="novoNome" placeholder="Novo primeiro nome">
+    <button id="btnRenomear">Alterar</button>
+  </section>
+
+  <section>
+    <h2>DELETE — excluir treinador</h2>
+    <button id="btnExcluir" class="perigo">Excluir</button>
+  </section>
+
+  <p id="saida">Comece criando um treinador.</p>
+
+  <script src="app.js"></script>
+</body>
+</html>

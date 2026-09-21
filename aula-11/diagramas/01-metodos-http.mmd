@@ -1,0 +1,40 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280'
+}}}%%
+flowchart LR
+    APP["Sua página<br/>fetch(url, opcoes)"]
+
+    GET["GET<br/>/PersonByGuid?Guid=..."]
+    POST["POST<br/>/Person<br/>+ corpo JSON"]
+    PATCH["PATCH<br/>/PersonFirstName?Name=...&Guid=..."]
+    DELETE["DELETE<br/>/Person?Guid=..."]
+
+    API[("API Pokédex<br/>dados dos treinadores")]
+
+    APP --> GET
+    APP --> POST
+    APP --> PATCH
+    APP --> DELETE
+
+    GET -- "ler: devolve o treinador" --> API
+    POST -- "criar: devolve o Guid novo" --> API
+    PATCH -- "alterar só o primeiro nome" --> API
+    DELETE -- "remover o treinador" --> API
+
+    classDef pagina fill:#2563EB,stroke:#1D4ED8,color:#FFFFFF;
+    classDef leitura fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    classDef escrita fill:#7C3AED,stroke:#6D28D9,color:#FFFFFF;
+    classDef remocao fill:#EA580C,stroke:#C2410C,color:#FFFFFF;
+    classDef servidor fill:#EDEDEB,stroke:#C9C8C2,color:#2C2C2A;
+    class APP pagina;
+    class GET leitura;
+    class POST,PATCH escrita;
+    class DELETE remocao;
+    class API servidor;

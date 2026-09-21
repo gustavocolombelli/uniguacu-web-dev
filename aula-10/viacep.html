@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{background-color: gray;}
+    #form-endereco{
+        display: flex;
+        border: solid 2px;
+        border-color: rgb(48, 48, 48);
+        flex-direction: row;
+        display: grid;
+        gap: 20px;
+    }
+
+</style>
+<body>
+    <input id="cep" type="text" placeholder="cep"></input>
+    <button id="buscar">Buscar</button>
+    <h1 id="info"></h1>
+
+    <div id="form-endereco">
+        <input id="cidade"></input>
+        <input id="logradouro"></input>
+        <input id="bairro"></input>
+        <input id="uf"></input>
+    </div>
+</body>
+<script>
+    let info = document.getElementById("info")
+    botaoBuscar = document.getElementById("buscar");
+    botaoBuscar.addEventListener("click", (e)=>{
+        valorCep = document.getElementById("cep").value
+        buscarCep(valorCep)
+    })
+
+    function preencherFormularioEndereco(dadosCep){
+
+        if(dadosCep.erro=="true"){
+            info.textContent="Erro ao buscar cep"
+        }
+
+        let inputLogradouro = document.getElementById('logradouro')
+        let inputCidade  = document.getElementById('cidade')
+        let inputBairro  = document.getElementById('bairro')
+        let inputUf  = document.getElementById('uf')
+
+        inputCidade.value = dadosCep.localidade
+        inputLogradouro.value = dadosCep.logradouro
+        inputBairro.value = dadosCep.bairro
+        inputUf.value = dadosCep.uf
+    }
+
+    function buscarCep(cep){
+        if(cep==""){
+            info.textContent = "Cep é um campo obrigatório"
+            return;
+        }
+        info.textContent = "Carregando..."
+  
+        fetch(`https://viacep.com.br/ws/${cep}/json`)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Imprimindo dados do cep")
+            console.log(data)
+            preencherFormularioEndereco(data)
+            info.innerText="Dados carregados com sucesso."
+        }).catch(()=>{
+            info.textContent = "Houve um erro ao consultar na api de VIACEP"
+        })
+       
+    }
+
+
+
+</script>
+
+</html>
