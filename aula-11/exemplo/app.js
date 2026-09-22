@@ -129,3 +129,17 @@ document.getElementById("formCriar").addEventListener("submit", criarTreinador);
 document.getElementById("btnBuscar").addEventListener("click", buscarTreinador);
 document.getElementById("btnRenomear").addEventListener("click", renomearTreinador);
 document.getElementById("btnExcluir").addEventListener("click", excluirTreinador);
+
+//1. Fluxo persistencia dos favoritos:
+//1.1. Criar usuario: https://personal-tp6a9zfc.outsystemscloud.com/Pokedex/rest/Pokede/Person
+//1.2. Salva o GUID no localStorage (localStorage.setItem("user-guid", guid))
+//1.3. Listar os pokemons
+//1.4. Na estrela/coração (ícone) do card que o pokemon está, podemos ao clicar no ícone, enviar para o endpoint:
+//https://personal-tp6a9zfc.outsystemscloud.com/Pokedex/rest/Pokede/FavoritarPokemon?GuidPerson={GuidPerson}&PokemonGuid={PokemonGuid}
+//o id do pokemon que veio da pokeapi e o guid do usuario salvo no passo 2.
+
+//2. "Logar"
+//2.1 Input com botão "Logar", o input recebe o nome do usuario criado no passo 1.1
+//2.2 Chamara o endpoint com o valor recebido em 2.1: https://personal-tp6a9zfc.outsystemscloud.com/Pokedex/rest/Pokede/GuidByUsername?Username={Username}
+//2.3 Receberá o guid da chamada 
+//2.4 Consultar endpoint e armazenar favoritos para mostrar para o usuario a partir de: https://personal-tp6a9zfc.outsystemscloud.com/Pokedex/rest/Pokede/FavoritosByGuidPerson?GuidPerson={GuidPerson}
