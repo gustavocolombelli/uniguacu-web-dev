@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1 class="cabecalho__titulo">Pokédex</h1>
+    <p class="cabecalho__usuario" id="saudacao-usuario">Você não está conectado</p>
+  </header>
+
+  <nav class="abas" aria-label="Seções da Pokédex">
+    <button type="button" class="abas__botao abas__botao--ativa" data-aba="lista" aria-current="page">Pokémons</button>
+    <button type="button" class="abas__botao" data-aba="favoritos">
+      Favoritos <span class="abas__contador" id="contador-favoritos">0</span>
+    </button>
+    <button type="button" class="abas__botao" data-aba="perfil">Perfil</button>
+  </nav>
+
+  <main class="conteudo">
+    <!-- US01, US02, US03: listagem, paginação e busca -->
+    <section class="secao" id="secao-lista" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Todos os pokémons</h2>
+
+      <form class="busca" id="formulario-busca" role="search">
+        <label for="campo-busca" class="visualmente-oculto">Buscar pokémon por nome ou número</label>
+        <input type="search" id="campo-busca" class="campo" placeholder="Buscar por nome ou número (ex.: pikachu, 25)" autocomplete="off">
+        <button type="submit" class="botao">Buscar</button>
+        <button type="button" class="botao botao--secundario" id="botao-limpar-busca" hidden>Limpar</button>
+      </form>
+
+      <p class="mensagem" id="mensagem-lista" role="status" aria-live="polite"></p>
+      <ul class="grade-pokemons" id="grade-lista"></ul>
+
+      <div class="paginacao" id="paginacao">
+        <button type="button" class="botao" id="botao-anterior">&larr; Anterior</button>
+        <span class="paginacao__indicador" id="indicador-pagina"></span>
+        <button type="button" class="botao" id="botao-proximo">Próximo &rarr;</button>
+      </div>
+    </section>
+
+    <!-- US06: favoritos (salvos na API Pokedex, por usuário) -->
+    <section class="secao" id="secao-favoritos" aria-labelledby="titulo-favoritos" hidden>
+      <h2 id="titulo-favoritos">Meus favoritos</h2>
+      <p class="mensagem" id="mensagem-favoritos" role="status" aria-live="polite"></p>
+      <ul class="grade-pokemons" id="grade-favoritos"></ul>
+    </section>
+
+    <!-- Usuário: entrar, criar conta e atualizar dados -->
+    <section class="secao" id="secao-perfil" aria-labelledby="titulo-perfil" hidden>
+      <h2 id="titulo-perfil">Perfil</h2>
+      <p class="mensagem" id="mensagem-perfil" role="status" aria-live="polite"></p>
+
+      <div class="perfil-desconectado" id="perfil-desconectado">
+        <form class="cartao formulario" id="formulario-entrar">
+          <h3>Já tenho conta</h3>
+          <label for="entrar-username">Username</label>
+          <input type="text" id="entrar-username" class="campo" required autocomplete="username">
+          <button type="submit" class="botao">Entrar</button>
+        </form>
+
+        <form class="cartao formulario" id="formulario-criar-usuario">
+          <h3>Criar conta</h3>
+          <label for="criar-nome">Nome</label>
+          <input type="text" id="criar-nome" class="campo" required autocomplete="given-name">
+
+          <label for="criar-sobrenome">Sobrenome</label>
+          <input type="text" id="criar-sobrenome" class="campo" required autocomplete="family-name">
+
+          <label for="criar-username">Username</label>
+          <input type="text" id="criar-username" class="campo" required autocomplete="username" pattern="[A-Za-z0-9_.\-]{3,30}" title="De 3 a 30 caracteres: letras, números, ponto, hífen ou sublinhado">
+
+          <label for="criar-nascimento">Data de nascimento</label>
+          <input type="date" id="criar-nascimento" class="campo" required>
+
+          <button type="submit" class="botao">Criar conta</button>
+        </form>
+      </div>
+
+      <div class="perfil-conectado" id="perfil-conectado" hidden>
+        <article class="cartao">
+          <h3>Meus dados</h3>
+          <dl class="dados-usuario">
+            <dt>Nome</dt><dd id="dado-nome"></dd>
+            <dt>Sobrenome</dt><dd id="dado-sobrenome"></dd>
+            <dt>Username</dt><dd id="dado-username"></dd>
+            <dt>Nascimento</dt><dd id="dado-nascimento"></dd>
+            <dt>Favoritos</dt><dd id="dado-total-favoritos"></dd>
+          </dl>
+        </article>
+
+        <form class="cartao formulario" id="formulario-atualizar-nome">
+          <h3>Atualizar nome</h3>
+          <label for="atualizar-nome">Novo nome</label>
+          <input type="text" id="atualizar-nome" class="campo" required autocomplete="given-name">
+          <button type="submit" class="botao">Salvar</button>
+        </form>
+
+        <button type="button" class="botao botao--secundario" id="botao-sair">Sair</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- US04: detalhes de um pokémon -->
+  <dialog class="detalhes" id="dialogo-detalhes" aria-labelledby="detalhes-nome">
+    <button type="button" class="detalhes__fechar" id="botao-fechar-detalhes" aria-label="Fechar detalhes">&times;</button>
+    <p class="mensagem" id="mensagem-detalhes" role="status" aria-live="polite"></p>
+    <article class="detalhes__conteudo" id="conteudo-detalhes" hidden>
+      <img class="detalhes__imagem" id="detalhes-imagem" src="" alt="">
+      <h2 class="detalhes__nome" id="detalhes-nome"></h2>
+      <p class="detalhes__numero" id="detalhes-numero"></p>
+      <ul class="tipos" id="detalhes-tipos"></ul>
+      <dl class="detalhes__medidas">
+        <div><dt>Altura</dt><dd id="detalhes-altura"></dd></div>
+        <div><dt>Peso</dt><dd id="detalhes-peso"></dd></div>
+      </dl>
+      <button type="button" class="botao" id="detalhes-botao-favorito"></button>
+    </article>
+  </dialog>
+
+  <footer class="rodape">
+    <p>Dados de <a href="https://pokeapi.co/">PokeAPI</a> · Favoritos e usuários na API Pokedex (OutSystems)</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

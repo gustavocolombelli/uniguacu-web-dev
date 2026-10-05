@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <img id="pokemon">
+    
+</body>
+<script>
+imgPokemon = document.getElementById('pokemon')
+res = fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then(res=>{
+    return res.json() //também é uma promessa
+})
+
+res.then(function(r){
+    imgPokemon.src = r.sprites.front_shiny
+})
+
+</script>
+</html>

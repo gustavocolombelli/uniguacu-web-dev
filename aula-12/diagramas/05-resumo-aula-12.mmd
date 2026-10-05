@@ -1,0 +1,33 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'cScale0': '#2563EB', 'cScaleLabel0': '#FFFFFF',
+  'cScale1': '#7C3AED', 'cScaleLabel1': '#FFFFFF',
+  'cScale2': '#16A34A', 'cScaleLabel2': '#FFFFFF',
+  'cScale3': '#EA580C', 'cScaleLabel3': '#FFFFFF'
+}}}%%
+mindmap
+  root((Aula 12<br/>Promises e requisições em paralelo))
+    Promise
+      valor que ainda vai chegar
+      pendente, cumprida ou rejeitada
+      new Promise com resolve e reject
+    Consumindo
+      then e catch encadeados
+      async e await, mesma coisa
+      função async sempre devolve Promise
+    Erros
+      rejeição vira throw no await
+      try, catch e finally
+      esquecer o await devolve a Promise
+    Várias ao mesmo tempo
+      await no for, uma por vez
+      dispare todas, depois espere
+      Promise.all, tudo ou nada
+      Promise.allSettled, aproveita o que deu certo

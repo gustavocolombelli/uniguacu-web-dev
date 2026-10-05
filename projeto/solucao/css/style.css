@@ -1,0 +1,558 @@
+/* ---------- Variáveis e base ---------- */
+
+:root {
+  --cor-primaria: #dc2626;
+  --cor-primaria-escura: #b91c1c;
+  --cor-fundo: #f4f4f5;
+  --cor-superficie: #ffffff;
+  --cor-texto: #18181b;
+  --cor-texto-suave: #52525b;
+  --cor-borda: #e4e4e7;
+  --cor-favorito: #f59e0b;
+  --cor-erro-fundo: #fef2f2;
+  --cor-erro-texto: #991b1b;
+  --cor-sucesso-fundo: #f0fdf4;
+  --cor-sucesso-texto: #166534;
+  --cor-info-fundo: #eff6ff;
+  --cor-info-texto: #1e40af;
+  --raio: 12px;
+  --sombra: 0 1px 3px rgb(0 0 0 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+}
+
+img {
+  max-width: 100%;
+}
+
+h2, h3 {
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Cabeçalho, abas e rodapé ---------- */
+
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
+}
+
+.cabecalho__titulo {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: 0.02em;
+}
+
+.cabecalho__usuario {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.abas {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0 1rem;
+  overflow-x: auto;
+  background: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.abas__botao {
+  flex: 1 0 auto;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.abas__botao:hover {
+  color: var(--cor-texto);
+}
+
+.abas__botao--ativa {
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
+}
+
+.abas__contador {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.4em;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #fff;
+  background: var(--cor-favorito);
+  border-radius: 999px;
+}
+
+.conteudo {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.rodape {
+  padding: 1rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--cor-texto-suave);
+}
+
+/* ---------- Componentes genéricos ---------- */
+
+.botao {
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--cor-primaria);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.botao:hover:not(:disabled) {
+  background: var(--cor-primaria-escura);
+}
+
+.botao:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.botao--secundario {
+  color: var(--cor-texto);
+  background: var(--cor-borda);
+}
+
+.botao--secundario:hover:not(:disabled) {
+  background: #d4d4d8;
+}
+
+.campo {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+}
+
+.campo:focus,
+.botao:focus-visible,
+.abas__botao:focus-visible {
+  outline: 3px solid rgb(220 38 38 / 0.35);
+  outline-offset: 1px;
+}
+
+.cartao {
+  padding: 1.25rem;
+  background: var(--cor-superficie);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.mensagem:empty {
+  display: none;
+}
+
+.mensagem {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.mensagem--carregando {
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie);
+}
+
+.mensagem--carregando::before {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.5em;
+  vertical-align: -0.1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+.mensagem--erro {
+  color: var(--cor-erro-texto);
+  background: var(--cor-erro-fundo);
+}
+
+.mensagem--sucesso {
+  color: var(--cor-sucesso-texto);
+  background: var(--cor-sucesso-fundo);
+}
+
+.mensagem--info {
+  color: var(--cor-info-texto);
+  background: var(--cor-info-fundo);
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Busca e paginação ---------- */
+
+.busca {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.busca .campo {
+  flex: 1 1 220px;
+}
+
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.paginacao[hidden] {
+  display: none;
+}
+
+.paginacao__indicador {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* ---------- Grade e cards de pokémon ---------- */
+
+.grade-pokemons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-pokemon {
+  position: relative;
+  height: 100%;
+  background: var(--cor-superficie);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card-pokemon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.1);
+}
+
+.card-pokemon__abrir {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0.5rem;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-radius: var(--raio);
+  cursor: pointer;
+}
+
+.card-pokemon__abrir:focus-visible {
+  outline: 3px solid rgb(220 38 38 / 0.35);
+}
+
+.card-pokemon__imagem {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+  background: radial-gradient(circle, var(--cor-fundo) 60%, transparent 61%);
+}
+
+.card-pokemon__numero {
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.card-pokemon__nome {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  text-align: center;
+  word-break: break-word;
+}
+
+.botao-favorito {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: #a1a1aa;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.botao-favorito:hover {
+  transform: scale(1.15);
+}
+
+.botao-favorito[aria-pressed="true"] {
+  color: var(--cor-favorito);
+}
+
+.botao-favorito:focus-visible {
+  outline: 3px solid rgb(245 158 11 / 0.5);
+}
+
+/* ---------- Perfil ---------- */
+
+.perfil-desconectado,
+.perfil-conectado {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.perfil-desconectado[hidden],
+.perfil-conectado[hidden] {
+  display: none;
+}
+
+.perfil-conectado > .botao {
+  justify-self: start;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formulario label {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.formulario .botao {
+  align-self: flex-start;
+  margin-top: 0.8rem;
+}
+
+.dados-usuario {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  margin: 0;
+}
+
+.dados-usuario dt {
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+.dados-usuario dd {
+  margin: 0;
+}
+
+/* ---------- Diálogo de detalhes ---------- */
+
+.detalhes {
+  width: min(92vw, 380px);
+  padding: 1.5rem;
+  border: 0;
+  border-radius: var(--raio);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
+}
+
+.detalhes::backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+.detalhes__fechar {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.detalhes__fechar:hover {
+  background: var(--cor-fundo);
+}
+
+.detalhes__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.detalhes__conteudo[hidden] {
+  display: none;
+}
+
+.detalhes__imagem {
+  width: 160px;
+  height: 160px;
+  image-rendering: pixelated;
+}
+
+.detalhes__nome {
+  margin: 0;
+}
+
+.detalhes__numero {
+  margin: 0 0 0.75rem;
+  color: var(--cor-texto-suave);
+}
+
+.detalhes__medidas {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.detalhes__medidas dt {
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.detalhes__medidas dd {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* ---------- Tipos ---------- */
+
+.tipos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tipo {
+  padding: 0.2rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #fff;
+  background: #71717a;
+  border-radius: 999px;
+}
+
+.tipo--normal   { background: #a8a77a; }
+.tipo--fire     { background: #ee8130; }
+.tipo--water    { background: #6390f0; }
+.tipo--electric { background: #d4a800; }
+.tipo--grass    { background: #5fae3a; }
+.tipo--ice      { background: #57b8b3; }
+.tipo--fighting { background: #c22e28; }
+.tipo--poison   { background: #a33ea1; }
+.tipo--ground   { background: #c2a14a; }
+.tipo--flying   { background: #8f7fe0; }
+.tipo--psychic  { background: #f95587; }
+.tipo--bug      { background: #8c9a1a; }
+.tipo--rock     { background: #b6a136; }
+.tipo--ghost    { background: #735797; }
+.tipo--dragon   { background: #6f35fc; }
+.tipo--dark     { background: #705746; }
+.tipo--steel    { background: #8a8aa8; }
+.tipo--fairy    { background: #d685ad; }
+
+/* ---------- Responsividade (mobile-first) ---------- */
+
+@media (min-width: 600px) {
+  .grade-pokemons {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .perfil-desconectado,
+  .perfil-conectado {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cabecalho,
+  .abas {
+    padding-left: max(1rem, calc((100% - 1200px) / 2 + 1rem));
+    padding-right: max(1rem, calc((100% - 1200px) / 2 + 1rem));
+  }
+
+  .abas__botao {
+    flex: 0 0 auto;
+  }
+}

@@ -1,0 +1,27 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706',
+  'transitionLabelColor': '#FFFFFF'
+}}}%%
+stateDiagram-v2
+    [*] --> Pendente: fetch(url) ou new Promise(...)
+    Pendente --> Cumprida: resolve(valor)
+    Pendente --> Rejeitada: reject(erro)
+    Cumprida --> [*]: await devolve o valor / .then
+    Rejeitada --> [*]: await lança o erro / .catch
+
+    classDef pendente fill:#4B5563,stroke:#374151,color:#FFFFFF;
+    classDef cumprida fill:#16A34A,stroke:#166534,color:#FFFFFF;
+    classDef rejeitada fill:#DC2626,stroke:#991B1B,color:#FFFFFF;
+    class Pendente pendente
+    class Cumprida cumprida
+    class Rejeitada rejeitada

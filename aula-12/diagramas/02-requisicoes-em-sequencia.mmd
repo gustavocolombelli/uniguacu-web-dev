@@ -1,0 +1,24 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor': '#2563EB',
+  'primaryTextColor': '#FFFFFF',
+  'primaryBorderColor': '#1D4ED8',
+  'secondaryColor': '#7C3AED',
+  'secondaryTextColor': '#FFFFFF',
+  'tertiaryTextColor': '#6B7280',
+  'lineColor': '#6B7280',
+  'textColor': '#6B7280',
+  'noteBkgColor': '#FEF3C7',
+  'noteTextColor': '#1F2937',
+  'noteBorderColor': '#D97706'
+}}}%%
+sequenceDiagram
+    participant P as Sua página
+    participant A as PokeAPI
+    P->>A: GET /pokemon/pikachu
+    A-->>P: 200 + JSON
+    Note over P: await: só agora pede o próximo
+    P->>A: GET /pokemon/eevee
+    A-->>P: 200 + JSON
+    P->>A: GET /pokemon/snorlax
+    A-->>P: 200 + JSON
+    Note over P,A: tempo total ≈ soma das três esperas
