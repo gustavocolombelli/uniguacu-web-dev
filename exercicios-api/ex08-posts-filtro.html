@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08 · Posts com filtro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>08 · Posts com filtro</h1>
+    <input id="filtro" placeholder="Filtrar pelo título...">
+    <ul id="lista"></ul>
+  </main>
+  <script>
+const lista = document.getElementById("lista");
+let posts = [];
+
+function mostrar(itens) {
+  lista.innerHTML = itens.map((p) => `<li>${p.title}</li>`).join("") || "<li>Nada encontrado.</li>";
+}
+
+document.getElementById("filtro").addEventListener("input", (e) => {
+  const texto = e.target.value.toLowerCase();
+  mostrar(posts.filter((p) => p.title.toLowerCase().includes(texto)));
+});
+
+(async () => {
+  lista.innerHTML = "<li>Carregando...</li>";
+  posts = await (await fetch("https://jsonplaceholder.typicode.com/posts?_limit=30")).json();
+  mostrar(posts);
+})();
+  </script>
+</body>
+</html>

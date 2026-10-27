@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 · Descobrir o CEP pelo endereço</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>03 · Descobrir o CEP pelo endereço</h1>
+    <label for="uf">UF</label>
+    <input id="uf" maxlength="2" value="SP">
+    <label for="cidade">Cidade</label>
+    <input id="cidade" value="São Paulo">
+    <label for="rua">Rua (mín. 3 letras)</label>
+    <input id="rua" value="Paulista">
+    <button id="buscar">Buscar</button>
+    <ul id="lista"></ul>
+  </main>
+  <script>
+const $ = (id) => document.getElementById(id);
+
+$("buscar").addEventListener("click", async () => {
+  const [uf, cidade, rua] = [$("uf").value, $("cidade").value, $("rua").value].map((v) => encodeURIComponent(v.trim()));
+  $("lista").innerHTML = "<li>Buscando...</li>";
+  try {
+    const resposta = await fetch(`https://viacep.com.br/ws/${uf}/${cidade}/${rua}/json/`);
+    if (!resposta.ok) throw new Error("Dados inválidos.");
+    const enderecos = await resposta.json();
+    $("lista").innerHTML = enderecos.length
+      ? enderecos.map((e) => `<li><strong>${e.cep}</strong> — ${e.logradouro}, ${e.bairro}</li>`).join("")
+      : "<li>Nenhum resultado.</li>";
+  } catch (e) {
+    $("lista").innerHTML = `<li>${e.message}</li>`;
+  }
+});
+  </script>
+</body>
+</html>

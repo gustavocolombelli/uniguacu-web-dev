@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 · Estados e cidades (IBGE)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>04 · Estados e cidades (IBGE)</h1>
+    <label for="estado">Estado</label>
+    <select id="estado"><option value="">Carregando...</option></select>
+    <label for="cidade">Cidade</label>
+    <select id="cidade" disabled><option value="">Escolha um estado</option></select>
+    <div id="resultado" class="resultado" hidden></div>
+  </main>
+  <script>
+const estado = document.getElementById("estado");
+const cidade = document.getElementById("cidade");
+const resultado = document.getElementById("resultado");
+const API = "https://servicodados.ibge.gov.br/api/v1/localidades";
+
+async function carregarEstados() {
+  const estados = await (await fetch(`${API}/estados?orderBy=nome`)).json();
+  estado.innerHTML = `<option value="">Selecione</option>` +
+    estados.map((e) => `<option value="${e.sigla}">${e.nome}</option>`).join("");
+}
+
+estado.addEventListener("change", async () => {
+  resultado.hidden = true;
+  if (!estado.value) { cidade.disabled = true; return; }
+  cidade.innerHTML = "<option>Carregando...</option>";
+  const cidades = await (await fetch(`${API}/estados/${estado.value}/municipios`)).json();
+  cidade.innerHTML = `<option value="">Selecione</option>` + cidades.map((c) => `<option>${c.nome}</option>`).join("");
+  cidade.disabled = false;
+});
+
+cidade.addEventListener("change", () => {
+  resultado.hidden = !cidade.value;
+  resultado.textContent = `${cidade.value} - ${estado.value}`;
+});
+
+carregarEstados();
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09 · Feriados nacionais</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>09 · Feriados nacionais</h1>
+    <label for="ano">Ano</label>
+    <input id="ano" type="number" min="1900" max="2199">
+    <button id="buscar">Ver feriados</button>
+    <ul id="lista"></ul>
+  </main>
+  <script>
+const ano = document.getElementById("ano");
+const lista = document.getElementById("lista");
+ano.value = new Date().getFullYear();
+
+document.getElementById("buscar").addEventListener("click", async () => {
+  lista.innerHTML = "<li>Carregando...</li>";
+  try {
+    const resposta = await fetch(`https://brasilapi.com.br/api/feriados/v1/${ano.value}`);
+    if (!resposta.ok) throw new Error("Ano inválido.");
+    const feriados = await resposta.json();
+    lista.innerHTML = feriados.map((f) => {
+      const [a, m, d] = f.date.split("-");
+      return `<li><strong>${d}/${m}/${a}</strong> — ${f.name}</li>`;
+    }).join("");
+  } catch (e) {
+    lista.innerHTML = `<li>${e.message}</li>`;
+  }
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 · Buscar CEP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>01 · Buscar CEP</h1>
+    <label for="cep">CEP (somente números)</label>
+    <input id="cep" maxlength="8" placeholder="01001000">
+    <button id="buscar">Buscar</button>
+    <div id="resultado"></div>
+  </main>
+  <script>
+const cep = document.getElementById("cep");
+const resultado = document.getElementById("resultado");
+
+document.getElementById("buscar").addEventListener("click", async () => {
+  const valor = cep.value.replace(/\D/g, "");
+  if (valor.length !== 8) {
+    resultado.className = "resultado erro";
+    resultado.textContent = "Digite um CEP com 8 números.";
+    return;
+  }
+  try {
+    const resposta = await fetch(`https://viacep.com.br/ws/${valor}/json/`);
+    const dados = await resposta.json();
+    if (dados.erro) throw new Error("CEP não encontrado.");
+    resultado.className = "resultado";
+    resultado.innerHTML = `<strong>${dados.logradouro}</strong><br>${dados.bairro}<br>${dados.localidade} - ${dados.uf}`;
+  } catch (e) {
+    resultado.className = "resultado erro";
+    resultado.textContent = e.message;
+  }
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 · Histórico de CEPs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>10 · Histórico de CEPs</h1>
+    <label for="cep">CEP</label>
+    <input id="cep" maxlength="8" placeholder="01001000">
+    <button id="buscar">Buscar</button>
+    <div id="resultado" class="resultado" hidden></div>
+    <h2 style="font-size:1rem">Últimas consultas</h2>
+    <ul id="historico"></ul>
+    <button id="limpar" style="background:#6b7280">Limpar histórico</button>
+  </main>
+  <script>
+const $ = (id) => document.getElementById(id);
+let historico = JSON.parse(localStorage.getItem("historico-cep")) || [];
+
+function desenhar() {
+  $("historico").innerHTML = historico
+    .map((h) => `<li><a href="#" data-cep="${h.cep}">${h.cep}</a> — ${h.cidade}/${h.uf}</li>`)
+    .join("");
+}
+
+async function consultar(cep) {
+  $("resultado").hidden = false;
+  $("resultado").textContent = "Buscando...";
+  try {
+    const dados = await (await fetch(`https://viacep.com.br/ws/${cep}/json/`)).json();
+    if (dados.erro) throw new Error("CEP não encontrado.");
+    $("resultado").innerHTML = `${dados.logradouro}, ${dados.bairro}<br>${dados.localidade} - ${dados.uf}`;
+    historico = [{ cep, cidade: dados.localidade, uf: dados.uf }, ...historico.filter((h) => h.cep !== cep)].slice(0, 5);
+    localStorage.setItem("historico-cep", JSON.stringify(historico));
+    desenhar();
+  } catch (e) {
+    $("resultado").textContent = e.message;
+  }
+}
+
+$("buscar").addEventListener("click", () => {
+  const cep = $("cep").value.replace(/\D/g, "");
+  if (cep.length === 8) consultar(cep);
+  else { $("resultado").hidden = false; $("resultado").textContent = "CEP deve ter 8 números."; }
+});
+$("historico").addEventListener("click", (e) => {
+  if (e.target.dataset.cep) { e.preventDefault(); consultar(e.target.dataset.cep); }
+});
+$("limpar").addEventListener("click", () => {
+  historico = [];
+  localStorage.removeItem("historico-cep");
+  desenhar();
+});
+desenhar();
+  </script>
+</body>
+</html>

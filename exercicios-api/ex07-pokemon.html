@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 · Buscar Pokémon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>07 · Buscar Pokémon</h1>
+    <label for="nome">Nome ou número</label>
+    <input id="nome" placeholder="pikachu">
+    <button id="buscar">Buscar</button>
+    <div id="resultado"></div>
+  </main>
+  <script>
+const nome = document.getElementById("nome");
+const resultado = document.getElementById("resultado");
+
+async function buscar() {
+  const termo = nome.value.trim().toLowerCase();
+  if (!termo) return;
+  resultado.className = "resultado";
+  resultado.textContent = "Buscando...";
+  try {
+    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${termo}`);
+    if (!resposta.ok) throw new Error("Pokémon não encontrado.");
+    const p = await resposta.json();
+    resultado.innerHTML = `
+      <img src="${p.sprites.front_default}" alt="${p.name}">
+      <h2 style="text-align:center;text-transform:capitalize">#${p.id} ${p.name}</h2>
+      <p>Tipos: ${p.types.map((t) => t.type.name).join(", ")}</p>
+      <p>Altura: ${p.height / 10} m · Peso: ${p.weight / 10} kg</p>`;
+  } catch (e) {
+    resultado.className = "resultado erro";
+    resultado.textContent = e.message;
+  }
+}
+
+document.getElementById("buscar").addEventListener("click", buscar);
+nome.addEventListener("keydown", (e) => e.key === "Enter" && buscar());
+  </script>
+</body>
+</html>

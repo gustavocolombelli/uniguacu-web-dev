@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 · Formulário com CEP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>02 · Formulário com CEP</h1>
+    <label for="cep">CEP</label>
+    <input id="cep" maxlength="9" placeholder="00000-000">
+    <label for="rua">Rua</label>
+    <input id="rua" readonly>
+    <label for="bairro">Bairro</label>
+    <input id="bairro" readonly>
+    <label for="cidade">Cidade</label>
+    <input id="cidade" readonly>
+    <label for="uf">UF</label>
+    <input id="uf" readonly>
+    <label for="numero">Número</label>
+    <input id="numero">
+    <p id="aviso"></p>
+  </main>
+  <script>
+const $ = (id) => document.getElementById(id);
+
+// máscara 00000-000
+$("cep").addEventListener("input", (e) => {
+  const n = e.target.value.replace(/\D/g, "").slice(0, 8);
+  e.target.value = n.length > 5 ? `${n.slice(0, 5)}-${n.slice(5)}` : n;
+  if (n.length === 8) preencher(n);
+});
+
+async function preencher(cep) {
+  $("aviso").textContent = "Buscando...";
+  try {
+    const dados = await (await fetch(`https://viacep.com.br/ws/${cep}/json/`)).json();
+    if (dados.erro) throw new Error("CEP não encontrado.");
+    $("rua").value = dados.logradouro;
+    $("bairro").value = dados.bairro;
+    $("cidade").value = dados.localidade;
+    $("uf").value = dados.uf;
+    $("aviso").textContent = "";
+    $("numero").focus();
+  } catch (e) {
+    $("aviso").textContent = e.message;
+  }
+}
+  </script>
+</body>
+</html>

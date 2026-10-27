@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 · Cotação de moedas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>06 · Cotação de moedas</h1>
+    <label for="moeda">Moeda</label>
+    <select id="moeda">
+      <option value="USD-BRL">Dólar → Real</option>
+      <option value="EUR-BRL">Euro → Real</option>
+      <option value="BTC-BRL">Bitcoin → Real</option>
+    </select>
+    <label for="quantidade">Quantidade</label>
+    <input id="quantidade" type="number" value="1" min="0">
+    <button id="converter">Converter</button>
+    <div id="resultado" class="resultado" hidden></div>
+  </main>
+  <script>
+const $ = (id) => document.getElementById(id);
+const reais = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+$("converter").addEventListener("click", async () => {
+  const par = $("moeda").value;
+  const resultado = $("resultado");
+  resultado.hidden = false;
+  resultado.textContent = "Consultando...";
+  try {
+    const dados = await (await fetch(`https://economia.awesomeapi.com.br/json/last/${par}`)).json();
+    const cotacao = Number(dados[par.replace("-", "")].bid);
+    resultado.innerHTML = `1 unidade = ${reais(cotacao)}<br><strong>Total: ${reais(cotacao * $("quantidade").value)}</strong>`;
+  } catch {
+    resultado.textContent = "Não foi possível consultar a cotação.";
+  }
+});
+  </script>
+</body>
+</html>

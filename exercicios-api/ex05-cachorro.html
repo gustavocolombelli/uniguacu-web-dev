@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 · Cachorro aleatório</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>05 · Cachorro aleatório</h1>
+    <img id="foto" alt="Cachorro" hidden>
+    <button id="novo">Mostrar outro cachorro</button>
+  </main>
+  <script>
+const foto = document.getElementById("foto");
+const botao = document.getElementById("novo");
+
+async function carregar() {
+  botao.disabled = true;
+  const dados = await (await fetch("https://dog.ceo/api/breeds/image/random")).json();
+  foto.onload = () => (botao.disabled = false);
+  foto.src = dados.message;
+  foto.hidden = false;
+}
+
+botao.addEventListener("click", carregar);
+carregar();
+  </script>
+</body>
+</html>
